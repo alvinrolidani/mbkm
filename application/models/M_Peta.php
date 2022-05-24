@@ -6,4 +6,8 @@ class M_Peta extends CI_Model
     {
         return $this->db->get_where('tb_kecamatan')->result();
     }
+    public function namaKecamatan($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
 }

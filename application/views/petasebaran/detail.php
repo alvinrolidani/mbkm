@@ -30,15 +30,15 @@
             </div>
             <div class="col-lg-10">
                 <div class="container">
-                    <h1 style="font-weight:bolder">List Data</h1>
+                    <?php foreach ($kecamatan as $nama) : ?>
+                        <h1 style="font-weight:bolder">List Data Inovasi Kabupaten <?= $nama->nama_kecamatan ?></h1>
+                    <?php endforeach; ?>
                     <div class="col-md-12">
-                        <form action="">
-                            <input type="text" name="q" class="form-control" style="width:400px;float:right;margin-bottom:40px;margin-top:-50px;border-radius:20px 20px" placeholder="Search" value=""> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
-                        </form>
+
                     </div>
 
                     <div class="table-bordered" style="margin-top:50px">
-                        <table class="table align-middle mb-0">
+                        <table class="table align-middle mb-0" id="table_id">
                             <thead class="table-light">
                                 <tr style="font-size:14px;">
                                     <th>Judul Inovasi</th>
@@ -56,10 +56,11 @@
                                         <td><?= $a->nama_bidang_inovasi ?></td>
                                         <td><a href=""><?= $a->nama_inovator ?></a></td>
                                         <td><?= $a->nama_kecamatan ?></td>
-                                        <td>sssss</td>
+                                        <td>Edit</td>
 
                                     </tr>
                                 <?php endforeach; ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -68,6 +69,12 @@
         </div>
     </div>
 
-
-    <!-- Optional JavaScript; choose one of the two! -->
 </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#table_id').DataTable();
+    });
+</script>
