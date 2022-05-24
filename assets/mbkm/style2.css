@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+body{
+    background-color: #F2EBEB;
+    overflow-x:hidden ;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-fluid{
+    padding-top: 15px;
+}
+
+
+.container-fluid .title{
+    width: 76rem;
+    height: 100px;
+    transform: translateX(-15px);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 3px 0px #666;
+}
+
+* > .container-fluid .title{
+    padding: 25px 10px 10px 20px;
+}
+
+
+
+
+
+/* 
+.container-fluid .legenda{
+    position: absolute;
+    width: 150px;
+    bottom: 60px;
+    right: 50px;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+
+.container-fluid .legenda ul li{
+    list-style: none;
+}
+
+.container-fluid .range img{
+    padding-top: 30px;
+    transform: translateY(-10px);
+    margin-left: 20px;
+} */
+
+/* awwal sidebar */
+.sidebar li .submenu{ 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    padding-left: 1rem; 
+    padding-right: 1rem;
+}
+.sidebar .nav-link {
+    font-weight: 900;
+    color: var(--bs-dark);
+}
+.sidebar .nav-link:hover {
+    color: var(--bs-primary);
+}
+/* akhir sidebar */
+
+
+.container-fluid .side-bar,
+.container-fluid .title,
+.container-fluid .legenda
+{
+    background-color: white;
+   
+}
+
+.container-fluid .nav
+{
+    display: flex;
+    align-content: center;
+    height: 147vh;
+    border-radius: 20px 0 0 0;
+}
+
+
