@@ -58,7 +58,7 @@
                                         <td><?= $a->nama_kategori_inovator ?></td>
                                         <td><a href=""><?= $a->nama_inovator ?></a></td>
                                         <td><?= $a->nama_kecamatan ?></td>
-                                        <td>Edit</td>
+                                        <td><a href="<?= base_url('detailinovasi/detailInovasi/' . $a->id_inovasi) ?>">Edit</a></td>
 
                                     </tr>
                                 <?php endforeach; ?>
