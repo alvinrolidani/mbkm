@@ -12,7 +12,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_kecamatan' => $id_kecamatan];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi,inovasi.id_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,tb_kecamatan.id_kecamatan')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'kesehatan')->get();
+        $query = $this->db->select('inovasi.nama_inovasi,inovasi.id_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,inovator.id_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'kesehatan')->get();
         $data = [
             'inovasi' => $query->result(),
             'kecamatan' => $this->peta->namaKecamatan($where, 'tb_kecamatan')->result(),
@@ -24,7 +24,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_kecamatan' => $id_kecamatan];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'kuliner')->get();
+        $query = $this->db->select('inovasi.nama_inovasi,inovasi.id_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,inovator.id_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'kuliner')->get();
         $data = [
             'inovasi' => $query->result(),
             'kecamatan' => $this->peta->namaKecamatan($where, 'tb_kecamatan')->result(),
@@ -36,7 +36,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_kecamatan' => $id_kecamatan];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'pendidikan')->get();
+        $query = $this->db->select('inovasi.nama_inovasi,inovasi.id_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,inovator.id_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'pendidikan')->get();
         $data = [
             'inovasi' => $query->result(),
             'kecamatan' => $this->peta->namaKecamatan($where, 'tb_kecamatan')->result(),
@@ -48,7 +48,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_kecamatan' => $id_kecamatan];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'pemberantasan kemiskinan')->get();
+        $query = $this->db->select('inovasi.nama_inovasi, inovasi.id_inovasi,bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,inovator.id_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'pemberantasan kemiskinan')->get();
         $data = [
             'inovasi' => $query->result(),
             'kecamatan' => $this->peta->namaKecamatan($where, 'tb_kecamatan')->result(),
@@ -60,7 +60,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_kecamatan' => $id_kecamatan];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'Pelayanan Masyarakat')->get();
+        $query = $this->db->select('inovasi.nama_inovasi,inovasi.id_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,inovator.id_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'Pelayanan Masyarakat')->get();
         $data = [
             'inovasi' => $query->result(),
             'kecamatan' => $this->peta->namaKecamatan($where, 'tb_kecamatan')->result(),
@@ -72,7 +72,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_kecamatan' => $id_kecamatan];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'lingkungan')->get();
+        $query = $this->db->select('inovasi.nama_inovasi,inovasi.id_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,inovator.id_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'lingkungan')->get();
         $data = [
             'inovasi' => $query->result(),
             'kecamatan' => $this->peta->namaKecamatan($where, 'tb_kecamatan')->result(),
@@ -84,7 +84,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_kecamatan' => $id_kecamatan];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'pertanian')->get();
+        $query = $this->db->select('inovasi.nama_inovasi,inovasi.id_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator,inovator.id_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_kecamatan', $id)->where('nama_bidang_inovasi', 'pertanian')->get();
         $data = [
             'inovasi' => $query->result(),
             'kecamatan' => $this->peta->namaKecamatan($where, 'tb_kecamatan')->result(),
@@ -96,7 +96,7 @@ class DetailInovasi extends CI_Controller
     {
         $where = ['id_inovasi' => $id_inovasi];
         $id = implode("','", $where);
-        $query = $this->db->select('inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_inovasi', $id)->get();
+        $query = $this->db->select('inovasi.nama_inovasi,inovasi.foto_inovasi, bidang_inovasi.nama_bidang_inovasi, inovator.nama_inovator,inovasi.deskripsi')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->where('inovasi.id_inovasi', $id)->get();
         $data = [
             'inovasi' => $query->result()
         ];

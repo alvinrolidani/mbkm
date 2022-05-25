@@ -84,9 +84,27 @@
             </div>
             <div class="col-lg-10">
                 <div class="caption">
-                    <h2 style="font-weight: bolder;">Sambutan Kepala Badan</h2>
-                    <p>Ir.Suryanto Putra, M.Si <br> Assalamualaikum Wr. Wb</p>
-                    <p>Pertama - kami mengucapkan selamat datang kepada pengunjung website Bappepdalitbang Kabupaten Bogor. <br>Website ini merupakan wujud kerja keras kami untuk menjawab derasnya tuntutan akan transparasi dan akuntabilitas lembaga pelayanan Publik </p>
+                    <h3 style="font-weight: bolder;">SAMBUTAN KEPALA BAPPEDALITBANG KABUPATEN BOGOR</h3>
+                    <br><br>Assalamualaikum Warahmatullahi Wabarakatuh</p>
+                    <p style="text-align: justify;">Daya saing saat ini menjadi salah satu parameter dalam konsep kemandirian daerah dan berkelanjutan. Strategi peningkatan daya saing daerah ditempuh melalui upaya menumbuhkembangkan inovasi daerah di berbagai sektor. Kabupaten Bogor merupakan salah satu dari daerah di Indonesia yang menciptakan terobosan-terobosan inovatif yang mengedepankan kemanfaatan, efesiensi, efektivitas dan berkelanjutan.
+
+                        <br><br>Pelan namun pasti, Kabupaten Bogor terus berbenah, mengoptimalkan kemampuan yang dimiliki untuk mendorong budaya inovasi yang selaras dengan program Panca Karsa guna mewujudkan Kabupaten Bogor Termaju, Nyaman dan Berkeadaban. Inovasi yang lahir bukan hanya sebatas tataran ide/gagasan inovasi tetapi sampai mengimplementasikan inovasi di masyarakat.
+
+                        <br><br>Inovasi dipandang sebagai proses kreatif yang tidak ternilai harganya. Sejalan dengan hal tersebut, Pemerintah Kabupaten Bogor menyelenggarakan Gelar Inovasi Daerah sebagai bentuk apresiasi kepara para inovator dalam rangka menumbuhkan motivasi dan budaya inovasi. Melalui kegiatan tahunan yang dilaksanakan secara konsisten dan berkelanjutan tersebut, tercipta beragam inovasi kreatif dari berbagai stakeholder di Kabupaten Bogor guna meningkatkan kesejahteraan masyarakat dan daya saing daerah.
+
+                        <br><br>Penerbitan buku ini merupakan bagian dari perjalanan lahirnya inovasi di Kabupaten Bogor. Semoga buku ini bermanfaat sebagaimana arahan Bupati Bogor sebagai bahan transfer of knowledge dan menjadi referensi bagi pihak-pihak yang memerlukan pengetahuan baru mengenai perkembangan inovasi.
+
+                        <br><br>Pada kesempatan yang baik ini, saya mengucapkan terima kasih kepada seluruh tim yang tidak kenal lelah dalam menyiapkan dan menerbitkan buku ini.
+
+                        <br><br>Wassalamualaikum Warahmatullahi Wabarakatuh
+
+
+
+                        <br><br>
+                    <p style="text-align: right;">KEPALA BAPPEDALITBANG</p>
+                    <p style="text-align: right;">KABUPATEN BOGOR</p>
+                    <br><br><br><br>
+                    <p style="text-align: right;">Ir. SURYANTO PUTRA, M.Si</p>
 
 
                 </div>

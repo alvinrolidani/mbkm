@@ -56,7 +56,7 @@
                                         <td><?= $a->nama_inovasi ?></td>
                                         <td><?= $a->nama_bidang_inovasi ?></td>
                                         <td><?= $a->nama_kategori_inovator ?></td>
-                                        <td><a href=""><?= $a->nama_inovator ?></a></td>
+                                        <td><a href="<?= base_url('detailinovator/detailInovator/' . $a->id_inovator) ?>"><?= $a->nama_inovator ?></a></td>
                                         <td><?= $a->nama_kecamatan ?></td>
                                         <td><a href="<?= base_url('detailinovasi/detailInovasi/' . $a->id_inovasi) ?>">Edit</a></td>
 
