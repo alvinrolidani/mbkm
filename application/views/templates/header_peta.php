@@ -53,7 +53,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/js//leaflet-panel-layers-master/src/leaflet-panel-layers.css') ?>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/mbkm/') ?>style2.css">
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
 
     <title>Hello, world!</title>

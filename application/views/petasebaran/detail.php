@@ -37,12 +37,13 @@
 
                     </div>
 
-                    <div class="table-bordered" style="margin-top:50px">
-                        <table class="table align-middle mb-0" id="table_id">
+                    <div style="margin-top:50px">
+                        <table class="table table-striped align-middle mb-0" id="table_id">
                             <thead class="table-light">
                                 <tr style="font-size:14px;">
                                     <th>Judul Inovasi</th>
-                                    <th>Kategori</th>
+                                    <th>Kategori Inovasi</th>
+                                    <th>Kategori Inovator</th>
                                     <th>Nama Inovator</th>
                                     <th>Kecamatan</th>
                                     <th>Aksi</th>
@@ -54,6 +55,7 @@
                                     <tr>
                                         <td><?= $a->nama_inovasi ?></td>
                                         <td><?= $a->nama_bidang_inovasi ?></td>
+                                        <td><?= $a->nama_kategori_inovator ?></td>
                                         <td><a href=""><?= $a->nama_inovator ?></a></td>
                                         <td><?= $a->nama_kecamatan ?></td>
                                         <td>Edit</td>
@@ -71,7 +73,7 @@
 
 </body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {

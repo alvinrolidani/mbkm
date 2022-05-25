@@ -7,30 +7,31 @@
                         <li>
                             <a class="nav-link" href="#"> <img src="<?= base_url('assets/mbkm/') ?>img/map/logo kab bogor 1.png" alt=""></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#menu_item1" href="#">Inovasi<i class="bi small bi-caret-down-fill"></i> </a>
-                            <ul id="menu_item1" class="submenu collapse" data-bs-parent="#nav_accordion">
-                                <li><a class="nav-link" href="#">Kesehatan</a></li>
-                                <li><a class="nav-link" href="#">Kuliner</a></li>
-                                <li><a class="nav-link" href="#">Pendidikan</a> </li>
-                                <li><a class="nav-link" href="#">Pemberantasan Kemiskinan</a> </li>
-                                <li><a class="nav-link" href="#">Pelayanan Masyarakat</a> </li>
-                                <li><a class="nav-link" href="#">Linkungan</a> </li>
-                                <li><a class="nav-link" href="#">Pertanian</a> </li>
-                            </ul>
-
-                        </li>
+                        <form action="">
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#menu_item1" href="#">Inovasi<i class="bi small bi-caret-down-fill"></i> </a>
+                                <ul id="menu_item1" class="submenu collapse" data-bs-parent="#nav_accordion">
+                                    <li><a class="nav-link" href="<?= base_url('kategoriinovasi/kesehatan') ?>">Kesehatan</a></li>
+                                    <li><a class="nav-link" href="<?= base_url('kategoriinovasi/kuliner') ?>" value="Kuliner" name="kuliner">Kuliner</a></li>
+                                    <li><a class="nav-link" href="<?= base_url('kategoriinovasi/pendidikan') ?>">Pendidikan</a> </li>
+                                    <li><a class="nav-link" href="<?= base_url('kategoriinovasi/pemberantasankemiskinan') ?>">Pemberantasan Kemiskinan</a> </li>
+                                    <li><a class="nav-link" href="<?= base_url('kategoriinovasi/pelayananmasyarakat') ?>">Pelayanan Masyarakat</a> </li>
+                                    <li><a class="nav-link" href="<?= base_url('kategoriinovasi/lingkungan') ?>">Lingkungan</a> </li>
+                                    <li><a class="nav-link" href="<?= base_url('kategoriinovasi/pertanian') ?>">Pertanian</a> </li>
+                                </ul>
+                            </li>
+                        </form>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#menu_item2" href="#">Inovator<i class="bi small bi-caret-down-fill"></i> </a>
                             <ul id="menu_item2" class="submenu collapse" data-bs-parent="#nav_accordion">
-                                <li><a class="nav-link" href="#">Mahasiswa</a></li>
-                                <li><a class="nav-link" href="#">SMP</a></li>
-                                <li><a class="nav-link" href="#">SMA/SMK</a></li>
-                                <li><a class="nav-link" href="#">Dosen peneliti</a></li>
-                                <li><a class="nav-link" href="#">Desa/Kelurahan</a></li>
-                                <li><a class="nav-link" href="#">Kecamatan</a></li>
-                                <li><a class="nav-link" href="#">Perangkat Desa</a></li>
-                                <li><a class="nav-link" href="#">Masyarakat umum</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/mahasiswa') ?>">Mahasiswa</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/sekolahmenengahpertama') ?>">SMP</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/smasederajat') ?>">SMA/SMK</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/dosenpeneliti') ?>">Dosen peneliti</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/desa') ?>">Desa/Kelurahan</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/kecamatan') ?>">Kecamatan</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/perangkatdesa') ?>">Perangkat Desa</a></li>
+                                <li><a class="nav-link" href="<?= base_url('kategoriinovator/masyarakat') ?>">Masyarakat umum</a></li>
 
                 </nav>
             </div>

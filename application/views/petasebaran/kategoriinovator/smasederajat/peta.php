@@ -16,7 +16,7 @@
     <?php
     $getId = $this->db->get('tb_kecamatan')->result();
     foreach ($getId as $row) {
-        $query = $this->db->query("SELECT inovasi.id_inovasi FROM `inovasi` JOIN tb_kecamatan ON inovasi.id_kecamatan = tb_kecamatan.id_kecamatan WHERE inovasi.id_kecamatan = '" . $row->id_kecamatan . "'");
+        $query = $this->db->query("SELECT inovasi.id_inovasi FROM `inovasi` JOIN inovator ON inovasi.id_inovator = inovator.id_inovator WHERE inovator.id_kategori_inovator = 3 AND inovasi.id_kecamatan = '" . $row->id_kecamatan . "'");
         $data[$row->nama_kecamatan] = $query->num_rows();
     }
     echo "HOTSPOT = " . json_encode($data)
@@ -37,7 +37,7 @@
     <?php
     $getId = $this->db->get('tb_kecamatan')->result();
     foreach ($getId as $row) {
-        $query = $this->db->query("SELECT inovator.id_inovator,tb_kecamatan.nama_kecamatan FROM `inovator` JOIN tb_kecamatan ON inovator.id_kecamatan = tb_kecamatan.id_kecamatan WHERE inovator.id_kecamatan ='" . $row->id_kecamatan . "'");
+        $query = $this->db->query("SELECT inovator.id_inovator FROM `inovator` WHERE inovator.id_kategori_inovator = 3 AND inovator.id_kecamatan ='" . $row->id_kecamatan . "'");
         $data[$row->nama_kecamatan] = $query->num_rows();
     }
     echo "INOVATOR = " . json_encode($data); ?>
@@ -63,13 +63,13 @@
                         color: 'white',
                         dashArray: '3',
                         fillOpacity: 0.5,
-                        fillColor: getColor(HOTSPOT[Nama])
+                        fillColor: getColor(INOVATOR[Nama])
                     };
                 }
                 geoLayer = L.geoJson(data, {
                     style: style1
 
-                }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + Nama + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[Nama] + '<br><b>Inovator : </b>' + INOVATOR[Nama] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/' . $kecamatan->id_kecamatan) ?>">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
+                }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + Nama + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[Nama] + '<br><b>Inovator : </b>' + INOVATOR[Nama] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('detailinovator/SMASederajat/' . $kecamatan->id_kecamatan) ?>">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
 
 
             })
