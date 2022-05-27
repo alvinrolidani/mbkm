@@ -29,7 +29,7 @@ body{
 
 
 .navbar-brand{
-    padding: 0 0 0 5rem;
+    padding: 0 0 0 3rem;
 }
 
 main{
@@ -60,8 +60,11 @@ main ul li{
 }
 
 .dropdown-menu li a{
-    color: var(--color1);
-    
+    color: var(--color3);
+}
+
+.dropdown-menu{
+    background-color: var(--color1);
 }
 
 
@@ -72,7 +75,7 @@ main ul li{
 #carouselExampleControls .carousel-inner img{
 
     width: 1000px;
-    height: 500px;
+    height: 550px;
     object-fit: cover;
     margin-bottom: 20px;
     
