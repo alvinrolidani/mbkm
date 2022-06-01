@@ -22,7 +22,17 @@ body{
     padding: 25px 10px 10px 20px;
 }
 
-
+.container-fluid ul{
+    display: flex;
+    padding-left: 10px;
+    margin-top: -10px;
+   
+   }
+   
+   .container-fluid ul li{
+    list-style: none;
+    padding-right: 20px;
+   }
 
 
 
@@ -67,6 +77,21 @@ body{
     height: 218vh;
    
     
+}
+.filter	nav{
+	display: flex;
+	gap:50px;
+	justify-content: center;
+	position: relative;
+	bottom: 450px;
+	z-index: 10
+}
+
+.filter nav .btn-secondary{
+	background-color: black;
+	opacity: 80%;
+	border-radius: 20px;
+	width: 200px; 
 }
 
 

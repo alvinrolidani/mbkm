@@ -5,7 +5,7 @@
 <script src="<?= base_url('assets/js//leaflet-panel-layers-master/src/leaflet-panel-layers.js') ?>"></script>
 <script src="<?= base_url('assets/js/') ?>leaflet.ajax.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="<?= base_url('home/data/kecamatan') ?>"></script>
+<script src="<?= base_url('kategoriinovasi/data/kecamatan') ?>"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
@@ -42,7 +42,6 @@
     }
     echo "INOVATOR = " . json_encode($data); ?>
     //mendapatkan warna berdasarkan jumlah
-
     function getColor(d) {
         return d > 40 ? '#0F5304' :
             d > 30 ? '#1CBE0D' :
@@ -50,25 +49,32 @@
             d > 10 ? '#DAEC0F' :
             '#EC930F';
     }
-    for (i = 0; i < kecamatan.length; i++) {
-        var data = kecamatan[i];
-        var NAMA = data.nama_kecamatan;
-        var layer = {
-            layer: new L.GeoJSON.AJAX(["<?= base_url() ?>assets/datakecamatan/" + data.shp], {
-                style: function(feature) {
-                    return {
-                        "color": 'white',
-                        'fillColor': getColor(HOTSPOT[NAMA]),
-                        "weight": 2,
-                        "opacity": 1,
-                        "fillOpacity": 0.5,
-                        "dashArray": 3
-                    }
 
-                },
-            }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + NAMA + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[NAMA] + '<br><b>Inovator : </b>' + INOVATOR[NAMA] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
+    <?php foreach ($kecamatan as $kecamatan) : ?>
+        var layer = {
+            layer: $.getJSON("<?= base_url('assets/datakecamatan/' . $kecamatan->shp) ?>", function(data) {
+                var Nama = '<?= $kecamatan->nama_kecamatan ?>';
+
+                function style1(feature) {
+                    return {
+                        weight: 2,
+                        opacity: 1,
+                        color: 'white',
+                        dashArray: '3',
+                        fillOpacity: 0.5,
+                        fillColor: getColor(HOTSPOT[Nama])
+                    };
+                }
+                geoLayer = L.geoJson(data, {
+                    style: style1
+
+                }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + Nama + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[Nama] + '<br><b>Inovator : </b>' + INOVATOR[Nama] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/' . $kecamatan->id_kecamatan) ?>">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
+
+
+            })
         }
-    }
+    <?php endforeach; ?>
+
     //Legend
     var legend = L.control({
         position: 'bottomleft'
@@ -92,6 +98,5 @@
     legend.addTo(map);
 </script>
 
-SELECT inovasi.nama_inovasi,inovasi.id_inovator,inovator.id_kategori_inovator,kategori_inovator.nama_kategori_inovator,bidang_inovasi.nama_bidang_inovasi FROM `inovasi` INNER JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator INNER JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE bidang_inovasi.nama_bidang_inovasi='kesehatan' AND inovator.id_kategori_inovator = 1;
 
 </html>

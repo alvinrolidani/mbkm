@@ -13,7 +13,6 @@
                         <li>
                             <a style="background-color:#0C4886;padding:0px 83px 0px 83px;height:110px" class="nav-link" href="#"> <img style="margin-top:15px" src="<?= base_url('assets/mbkm/') ?>img/map/logo kab bogor 1.png" alt=""></a>
                         </li>
-
                         <li>
                             <div class="col-lg-10">
                                 <div class="list" style="border:2px solid #0C4886; border-radius:0px 20px 20px 0px; margin-top:80px;background-color:#0C4886;height:55px">
@@ -41,22 +40,27 @@
                         <table class="table table-striped align-middle mb-0" id="table_id">
                             <thead class="table-light">
                                 <tr style="font-size:14px;">
+                                    <th>No</th>
                                     <th>Judul Inovasi</th>
                                     <th>Kategori Inovasi</th>
                                     <th>Kategori Inovator</th>
                                     <th>Nama Inovator</th>
+                                    <th>Tanggal Lahir</th>
                                     <th>Kecamatan</th>
                                     <th>Aksi</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($inovasi as $a) : ?>
+                                <?php $i = 1;
+                                foreach ($inovasi as $a) : ?>
                                     <tr>
+                                        <th><?= $i++ ?></th>
                                         <td><?= $a->nama_inovasi ?></td>
                                         <td><?= $a->nama_bidang_inovasi ?></td>
                                         <td><?= $a->nama_kategori_inovator ?></td>
                                         <td><a href="<?= base_url('detailinovator/detailInovator/' . $a->id_inovator) ?>"><?= $a->nama_inovator ?></a></td>
+                                        <td><?= date('Y', strtotime($a->tgl_lahir)) ?></td>
                                         <td><?= $a->nama_kecamatan ?></td>
                                         <td><a href="<?= base_url('detailinovasi/detailInovasi/' . $a->id_inovasi) ?>">Edit</a></td>
 
