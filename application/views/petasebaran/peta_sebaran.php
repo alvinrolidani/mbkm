@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?= base_url('assets/mbkm/') ?>style2.css">
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
@@ -6,6 +7,7 @@
 <script src="<?= base_url('assets/js/') ?>leaflet.ajax.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?= base_url('home/data/kecamatan') ?>"></script>
+<script src="<?= base_url('home/data/kategori') ?>"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
@@ -41,7 +43,7 @@
         $data[$row->nama_kecamatan] = $query->num_rows();
     }
     echo "INOVATOR = " . json_encode($data); ?>
-    //mendapatkan warna berdasarkan jumlah
+    //mendapatkan warna berdasarkan jumla
 
     function getColor(d) {
         return d > 40 ? '#0F5304' :
@@ -50,11 +52,17 @@
             d > 10 ? '#DAEC0F' :
             '#EC930F';
     }
-    for (i = 0; i < kecamatan.length; i++) {
-        var data = kecamatan[i];
-        var NAMA = data.nama_kecamatan;
-        var layer = {
-            layer: new L.GeoJSON.AJAX(["<?= base_url() ?>assets/datakecamatan/" + data.shp], {
+    let geojson;
+
+    getGeoJson = async () => {
+        for (i = 0; i < kecamatan.length; i++) {
+            var data = kecamatan[i]
+            var NAMA = data.nama_kecamatan
+            let url = `<?= base_url() ?>assets/datakecamatan/` + data.shp
+            let get = await fetch(url)
+            let json = await get.json();
+
+            geojson = L.geoJson(json, {
                 style: function(feature) {
                     return {
                         "color": 'white',
@@ -64,11 +72,34 @@
                         "fillOpacity": 0.5,
                         "dashArray": 3
                     }
-
-                },
+                }
             }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + NAMA + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[NAMA] + '<br><b>Inovator : </b>' + INOVATOR[NAMA] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
+
+
         }
     }
+    getGeoJson();
+
+
+    // for (i = 0; i < kecamatan.length; i++) {
+    //     var data = kecamatan[i];
+    //     var NAMA = data.nama_kecamatan;
+    //     var layer = {
+    //         layer: new L.GeoJSON.AJAX(["<?= base_url() ?>assets/datakecamatan/" + data.shp], {
+    //             style: function(feature) {
+    //                 return {
+    //                     "color": 'white',
+    //                     'fillColor': getColor(HOTSPOT[NAMA]),
+    //                     "weight": 2,
+    //                     "opacity": 1,
+    //                     "fillOpacity": 0.5,
+    //                     "dashArray": 3
+    //                 }
+
+    //             },
+    //         }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + NAMA + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[NAMA] + '<br><b>Inovator : </b>' + INOVATOR[NAMA] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
+    //     }
+    // }
     //Legend
     var legend = L.control({
         position: 'bottomleft'
@@ -91,7 +122,5 @@
 
     legend.addTo(map);
 </script>
-
-SELECT inovasi.nama_inovasi,inovasi.id_inovator,inovator.id_kategori_inovator,kategori_inovator.nama_kategori_inovator,bidang_inovasi.nama_bidang_inovasi FROM `inovasi` INNER JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator INNER JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE bidang_inovasi.nama_bidang_inovasi='kesehatan' AND inovator.id_kategori_inovator = 1;
 
 </html>

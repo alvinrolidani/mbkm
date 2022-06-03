@@ -10,4 +10,7 @@ class M_Peta extends CI_Model
     {
         return $this->db->get_where($table, $where);
     }
+    public function kategori()
+    {
+    }
 }
