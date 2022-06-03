@@ -24,14 +24,15 @@
 
         </div>
     </div>
-    <form action="<?= base_url('home/getkategori') ?>" method="get">
+
+    <form action="<?= base_url('home/peta') ?>" method="get">
 
 
         <div class="filter">
             <nav>
 
                 <div class="form-group">
-                    <select id="inovasi" name="kategoriinovasi" class="form-control" style="font-weight:bolder ;">
+                    <select name="kategoriinovasi" class="form-control" style="font-weight:bolder ;">
                         <option value="" style="font-weight:bolder ;">Pilih Inovasi</option>
                         <option value="Kesehatan" style="font-weight:bolder ;">Kesehatan</option>
                         <option value="Kuliner" style="font-weight:bolder ;">Kuliner</option>

@@ -16,6 +16,17 @@ class Home extends CI_Controller
 	}
 	public function peta()
 	{
+		$idi = $this->input->get('kategoriinovator');
+		$id = $this->input->get('kategoriinovasi');
+		$get = $this->db->get('tb_kecamatan')->result();
+		foreach ($get as $a) {
+			$inovasi = $this->db->query("SELECT * FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE kategori_inovator.nama_kategori_inovator= '" . $idi . "'AND inovasi.id_kecamatan='" . $a->id_kecamatan . "' AND bidang_inovasi.nama_bidang_inovasi ='" . $id . "'");
+			$data[$a->nama_kecamatan] = $inovasi->num_rows();
+		}
+		$data['id'] = $id;
+		$data['idi'] = $idi;
+		$data['inovasi'] = $this->input->get('kategoriinovasi');
+		$data['inovator'] = $this->input->get('kategoriinovator');
 
 		$data['kecamatan'] = $this->M_Peta->get();
 		$data['inovasi'] = $this->db->query("SELECT * FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON bidang_inovasi.id_bidang_inovasi = inovasi.id_bidang_inovasi");
@@ -38,7 +49,7 @@ class Home extends CI_Controller
 		$this->load->view('templates/header_peta.php');
 		$this->load->view('petasebaran/detail', $data);
 	}
-	public function data($jenis = 'kecamatan')
+	public function data($jenis = 'kecamatan', $kategori = 'inovasi')
 	{
 		$query = $this->db->select('inovasi.created_at, bidang_inovasi.id_bidang_inovasi,inovator.tgl_lahir,inovator.id_inovator,inovasi.id_inovasi,inovasi.nama_inovasi, bidang_inovasi.nama_bidang_inovasi,tb_kecamatan.nama_kecamatan, inovator.nama_inovator,kategori_inovator.nama_kategori_inovator')->from('inovasi')->join('bidang_inovasi', 'inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi', 'INNER')->join('tb_kecamatan', 'inovasi.id_kecamatan=tb_kecamatan.id_kecamatan', 'INNER')->join('inovator', 'inovasi.id_inovator = inovator.id_inovator', 'INNER')->join('kategori_inovator', 'inovator.id_kategori_inovator = kategori_inovator.id_kategori_inovator')->get();
 		if ($jenis == 'kecamatan') {
@@ -51,41 +62,26 @@ class Home extends CI_Controller
 				$response[] = $data;
 			}
 			echo "var kecamatan=" . json_encode($response, JSON_PRETTY_PRINT);
-		} else {
-
-			foreach ($query->result() as $row) {
-				$data = [
-					'id_inovasi' => $row->id_inovasi,
-					'inovasi' => [
-						'nama_bidang_inovasi' => $row->nama_bidang_inovasi,
-						'nama_inovasi' => $row->nama_inovasi,
-						'inovator' => $row->nama_inovator,
-						'created_at' => date('Y', strtotime($row->created_at))
-					]
-				];
-				$response[] = $data;
-			}
-			echo "var inovasi =" . json_encode($response, JSON_PRETTY_PRINT);
+		} else if ($kategori == 'inovasi') {
 		}
 	}
 	public function getkategori()
 	{
 		header('Content-Type:application/json');
 		$response = [];
-
 		$idi = $this->input->get('kategoriinovator');
 		$id = $this->input->get('kategoriinovasi');
-		$ino = $this->db->select('*')->from('bidang_inovasi')->where('nama_bidang_inovasi', $id)->get()->row();
-		$kategori = $this->db->select('*')->from('kategori_inovator')->where('nama_kategori_inovator', $idi)->get()->row();
-		$idbid = $ino->id_bidang_inovasi;
-		$idinovator = $kategori->id_kategori_inovator;
+		// $ino = $this->db->select('*')->from('bidang_inovasi')->where('nama_bidang_inovasi', $id)->get()->row();
+		// $kategori = $this->db->select('*')->from('kategori_inovator')->where('nama_kategori_inovator', $idi)->get()->row();
+		// $idbid = $ino->id_bidang_inovasi;
+		// $idinovator = $kategori->id_kategori_inovator;
 
 		$get = $this->db->get('tb_kecamatan')->result();
 		foreach ($get as $a) {
-			$inovasi = $this->db->query("SELECT * FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator WHERE inovator.id_kategori_inovator= '" . $idinovator . "'AND inovasi.id_kecamatan='" . $a->id_kecamatan . "' AND inovasi.id_bidang_inovasi ='" . $idbid . "'");
+			$inovasi = $this->db->query("SELECT * FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE kategori_inovator.nama_kategori_inovator= '" . $idi . "'AND inovasi.id_kecamatan='" . $a->id_kecamatan . "' AND bidang_inovasi.nama_bidang_inovasi ='" . $id . "'");
 			$data[$a->nama_kecamatan] = $inovasi->num_rows();
 		}
 		$response[] = $data;
-		echo "inovasi=" . json_encode($response, JSON_PRETTY_PRINT);
+		echo "var kategori=" . json_encode($response, JSON_PRETTY_PRINT);
 	}
 }
