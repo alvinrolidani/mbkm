@@ -1,64 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
-body{
-    background-color: #F2EBEB;
-    overflow-x:hidden ;
-    font-weight: 900;
-    font-family: 'Montserrat', sans-serif;
+body {
+	background-color: #F2EBEB;
+	overflow-x: hidden;
+	font-weight: 900;
+	font-family: 'Montserrat', sans-serif;
 }
 
-.container-fluid{
-    padding-top: 5px;
+.container-fluid {
+	padding-top: 5px;
 }
 
 
-.container-fluid .title{
-    width: 1536px;
-    height: 100px;
-    transform: translateX(-49px);
+.container-fluid .title {
+	width: 1536px;
+	height: 100px;
+	transform: translateX(-49px);
 }
 
-* > .container-fluid .title{
-    padding: 25px 10px 10px 20px;
+*>.container-fluid .title {
+	padding: 25px 10px 10px 20px;
 }
 
-.container-fluid ul{
-    display: flex;
-    padding-left: 10px;
-    margin-top: -10px;
-   
-   }
-   
-   .container-fluid ul li{
-    list-style: none;
-    padding-right: 20px;
-   }
+.container-fluid ul {
+	display: flex;
+	padding-left: 10px;
+	margin-top: -10px;
+
+}
+
+.container-fluid ul li {
+	list-style: none;
+	padding-right: 20px;
+}
 
 
 
 /* awwal sidebar */
-.sidebar li { 
-    margin: 0; 
-    padding: 0; 
-    padding-right: 3rem;
-    
+.sidebar li {
+	margin: 0;
+	padding: 0;
+	padding-right: 3rem;
+
 }
+
 .sidebar #menu_item1 li,
-.sidebar #menu_item2 li{
-    padding-left: 20px;
-    list-style: disc outside;
-    transform: translateX(20px);
-   
-  
+.sidebar #menu_item2 li {
+	padding-left: 20px;
+	list-style: disc outside;
+	transform: translateX(20px);
+
+
 }
 
 
 
 
 .sidebar .nav-link {
-    transform: translateX(-15px);
-    font-weight: 900;
-    color: var(--bs-dark);
+	transform: translateX(-15px);
+	font-weight: 900;
+	color: var(--bs-dark);
 }
 
 
@@ -66,32 +67,31 @@ body{
 
 
 .container-fluid .sidebar,
-.container-fluid .title
-{
-    background-color: white;
-   
+.container-fluid .title {
+	background-color: white;
+
 }
 
-.container-fluid .nav
-{
-    height: 218vh;
-   
-    
+.container-fluid .nav {
+	height: 218vh;
+
+
 }
-.filter	nav{
+
+.filter nav {
 	display: flex;
-	gap:50px;
+	gap: 50px;
 	justify-content: center;
 	position: relative;
 	bottom: 450px;
 	z-index: 10
 }
 
-.filter nav .btn-secondary{
+.filter nav .btn-secondary {
 	background-color: black;
 	opacity: 80%;
 	border-radius: 20px;
-	width: 200px; 
+	width: 200px;
 }
 
 
@@ -99,21 +99,21 @@ body{
 
 /* toggle */
 .active-nav {
-    width: 34%;
-    overflow-x: hidden;
-    transition: width 1s ease-out;
+	width: 34%;
+	overflow-x: hidden;
+	transition: width 1s ease-out;
 }
 
-.active-nav-btn{
-  transform: translateX(-120px);
-  transition: 0.2s;
+.active-nav-btn {
+	transform: translateX(-120px);
+	transition: 0.2s;
 }
 
-.active-nav-title{
-    transform: translateX(-135px);
-    transition: 0.4s;
+.active-nav-title {
+	transform: translateX(-135px);
+	transition: 0.4s;
 
-   
+
 }
 
 /* akhir toggle */
