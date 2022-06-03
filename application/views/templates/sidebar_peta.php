@@ -24,15 +24,16 @@
 
         </div>
     </div>
-
-    <form action="<?= base_url('home/peta') ?>" method="get">
+    <form action="<?= base_url('home/getkategori') ?>" method="get">
 
 
         <div class="filter">
             <nav>
-
-                <div class="form-group">
-                    <select name="kategoriinovasi" class="form-control" style="font-weight:bolder ;">
+                <button type="submit" style="background: transparent;border:none;">
+                    <img src="<?= base_url('assets/mbkm/') ?>img/Vector.png">
+                </button>
+                <div class="form-group" data-bs-toggle="dropdown">
+                    <select id="inovasi" name="kategoriinovasi" class="form-control" style="background:black; color:white; opacity:0.6; font-weight:bolder; border-radius:20px 20px 20px 20px">
                         <option value="" style="font-weight:bolder ;">Pilih Inovasi</option>
                         <option value="Kesehatan" style="font-weight:bolder ;">Kesehatan</option>
                         <option value="Kuliner" style="font-weight:bolder ;">Kuliner</option>
@@ -45,7 +46,7 @@
                 </div>
 
                 <div class="form-group">
-                    <select id="inovator" name="kategoriinovator" class="form-control" style="font-weight:bolder ;">
+                    <select id="inovator" name="kategoriinovator" class="form-control" style="background:black; color:white; opacity:0.6; font-weight:bolder; border-radius:20px 20px 20px 20px">
                         <option value="" style="font-weight:bolder ;">Pilih Inovator</option>
                         <option value="Mahasiswa" style="font-weight:bolder ;">Mahasiswa</option>
                         <option value="SMA/SMK" style="font-weight:bolder ;">SMA/SMK</option>
@@ -59,7 +60,7 @@
                 </div>
 
                 <div class="form-group">
-                    <select id="Tahun" class="form-control" style="font-weight:bolder ;">
+                    <select id="Tahun" class="form-control" style="background:black; color:white; opacity:0.6; font-weight:bolder; border-radius:20px 20px 20px 20px">
                         <option value="">Pilih Tahun</option>
                         <?php for ($i = 2016; $i <= date('Y'); $i++) : ?>
                             <option value="<?= $i ?>" style="font-weight:bolder ;"><?= $i ?></option>
@@ -67,7 +68,7 @@
                     </select>
                 </div>
 
-                <button type="submit">
+                <button type="submit" style="background: transparent;border:none;">
                     <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
                 </button>
 

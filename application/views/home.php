@@ -3,7 +3,7 @@
 
 <head>
     <!-- Required meta tags -->
-    <title>Hello, world!</title>
+    <title>Peta Sebaran Inovasi</title>
 </head>
 
 <body>
@@ -14,19 +14,19 @@
         <div class="main-menu">
             <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #f3D900;">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><img src="<?= base_url('assets/mbkm/') ?>img/logo bappeda.png" alt=""></a>
+                    <a class="navbar-brand" style="padding-left: 10;" href="#"><img src="<?= base_url('assets/mbkm/') ?>img/logo bappeda.png" alt=""></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
+                            <li class="nav-item" style="padding-left: 100;">
                                 <a class="nav-link active" href="#" style="color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Beranda</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="<?= base_url('home/peta') ?>" style="color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Peta Sebaran</a>
+                            <li class="nav-item" style="padding-left: 70;">
+                                <a class="nav-link " href="<?= base_url('home/peta') ?>" style="width:500; color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Peta Sebaran</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="padding-left: 70;">
                                 <div class="dropdown">
                                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #f3D900; border-radius: 7px; color:#0C4885; width: 130px; border: none; font-weight: bold; font-size: 1.3rem;">
                                         Tentang
@@ -38,7 +38,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="padding-left: 80;">
                                 <button class="login" type="submit" style="background-color: #0C4885; color: white; border-radius: 15px; border: 0px; width: 100px; height: 30px; ">Login</button>
                             </li>
                         </ul>

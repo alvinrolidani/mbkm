@@ -12,7 +12,7 @@
     .info {
         padding: 10px 12px;
         font: 14px/16px Arial, Helvetica, sans-serif;
-        height: 160px;
+        height: 165px;
         background: white;
         background: rgba(255, 255, 255, 0.8);
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -32,7 +32,7 @@
 
     .legend i {
         width: 18px;
-        height: 20px;
+        height: 30px;
         float: left;
         margin-right: 8px;
         opacity: 0.7;

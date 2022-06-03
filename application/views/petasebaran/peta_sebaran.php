@@ -7,7 +7,7 @@
 <script src="<?= base_url('assets/js/') ?>leaflet.ajax.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?= base_url('home/data/kecamatan') ?>"></script>
-<script src="<?= base_url('home/getkategori') . "?kategoriinovasi=" . $id . "&kategoriinovator=" . $idi ?>"></script>
+<script src="<?= base_url('home/data/kategori') ?>"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
@@ -23,13 +23,6 @@
     }
     echo "HOTSPOT = " . json_encode($data)
     ?>
-    // 
-    // $inovasi = $_GET['kategoriinovasi'];
-    // $inovator = $_GET['kategoriinovator'];
-    // $url = base_url("home/getkategori?kategoriinovasi='" . $inovasi . "&kategoriinovator='" . $inovator . "'");
-    // echo "API = " . json_encode($url);
-
-    // 
 
     //ambil data json dari count
 
@@ -55,18 +48,12 @@
     function getColor(d) {
         return d > 40 ? '#0F5304' :
             d > 30 ? '#1CBE0D' :
-            d > 20 ? '#B8E404' :
-            d > 10 ? '#DAEC0F' :
-            '#EC930F';
+            d > 20 ? '#67E404' :
+            d > 10 ? '#DFD828' :
+            '#FAFF00';
     }
     let geojson;
-    // let jsonData = [{
-    //     'data': kategori,
-    // }]
-    let jsonData = [{
-        'data': kategori
-    }]
-    console.log(jsonData)
+
     getGeoJson = async () => {
         for (i = 0; i < kecamatan.length; i++) {
             var data = kecamatan[i]
