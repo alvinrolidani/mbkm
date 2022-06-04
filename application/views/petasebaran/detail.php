@@ -87,7 +87,7 @@
 
 
 
-            <div class="col-lg-10" style="background-color:blue;">
+            <div class="col-lg-10">
                 <div class="container">
                     <div style="margin-top:-40rem;margin-left:250px;width:75rem">
                         <table class="table table-striped align-middle mb-0" id="table_id">
