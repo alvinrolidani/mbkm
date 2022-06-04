@@ -29,9 +29,9 @@
 
         <div class="filter">
             <nav>
-                <button type="submit" style="background: transparent;border:none;">
+                <a href="<?= base_url('Home/index') ?>" style="background: transparent;border:none;">
                     <img src="<?= base_url('assets/mbkm/') ?>img/Vector.png">
-                </button>
+                </a>
                 <div class="form-group" data-bs-toggle="dropdown">
                     <select id="inovasi" name="kategoriinovasi" class="form-control" style="background:black; color:white; opacity:0.6; font-weight:bolder; border-radius:20px 20px 20px 20px">
                         <option value="" style="font-weight:bolder ;">Pilih Inovasi</option>

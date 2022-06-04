@@ -52,7 +52,7 @@
             <nav class="sidebar card mb-4" style="background-color:white; height:47rem">
                 <ul class="nav flex-column" id="nav_accordion">
                     <li>
-                        <a style="background-color:white;padding:0px 10px 0px 10px;height:110px" class="nav-link" href="#"> <img style="margin-top:15px; width:200px;" src="<?= base_url('assets/mbkm/') ?>img/map/oke.png" alt=""></a>
+                        <a style="background-color:white;padding:0px 10px 0px 10px;height:110px" class="nav-link" href="<?= base_url('home/index'); ?>"> <img style="margin-top:15px; width:200px;" src="<?= base_url('assets/mbkm/') ?>img/map/oke.png" alt=""></a>
                     </li>
                     <li>
                         <div class="col-lg-10">
@@ -62,7 +62,7 @@
                             </div> -->
                         </div>
                         <div class="col-lg-10">
-                            <a href="#" class="previous">&laquo; Back</a>
+                            <a href="<?= base_url('home/peta') ?>" class="previous">&laquo; Back</a>
                             <!-- <a href="<?= base_url('home/peta') ?>">
                                 <img src="<?= base_url('assets/mbkm/') ?>img/back.png" alt="" width="75px" style="margin: 40px 0px 0px 75px">
                             </a> -->
