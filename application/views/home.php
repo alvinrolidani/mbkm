@@ -39,7 +39,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <button class="login" type="submit" style="background-color: #0C4885; color: white; border-radius: 15px; border: 0px; width: 100px; height: 30px; ">Login</button>
+                                <button class="login" type="submit" style="background-color: #0C4885; color: white; border-radius: 15px; border: 0px; width: 100px; height: 30px; "><a href="http://bekoy.site/MBKM1/index.php/Login" style="text-decoration: none; color:white">Login</a></button>
                             </li>
                         </ul>
                     </div>
