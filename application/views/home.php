@@ -20,13 +20,13 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item" style="padding-left: 100;">
-                                <a class="nav-link active" href="#" style="color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Beranda</a>
+                            <li class="nav-item" style="margin-left: 225;">
+                                <a class="nav-link active" href="#" style="padding-left:25; color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Beranda</a>
                             </li>
-                            <li class="nav-item" style="padding-left: 70;">
+                            <li class="nav-item">
                                 <a class="nav-link " href="<?= base_url('home/peta') ?>" style="width:500; color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Peta Sebaran</a>
                             </li>
-                            <li class="nav-item" style="padding-left: 70;">
+                            <li class="nav-item">
                                 <div class="dropdown">
                                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #f3D900; border-radius: 7px; color:#0C4885; width: 130px; border: none; font-weight: bold; font-size: 1.3rem;">
                                         Tentang
@@ -38,7 +38,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item" style="padding-left: 80;">
+                            <li class="nav-item">
                                 <button class="login" type="submit" style="background-color: #0C4885; color: white; border-radius: 15px; border: 0px; width: 100px; height: 30px; ">Login</button>
                             </li>
                         </ul>
@@ -55,13 +55,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (1).jpeg" class="d-block w-100" alt="...">
+                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (1).jpeg" class="d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM.jpeg" class="d-block w-100" alt="...">
+                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM.jpeg" class="d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (2).jpeg" class="d-block w-100" alt="...">
+                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (2).jpeg" class="d-block w-100 h-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
