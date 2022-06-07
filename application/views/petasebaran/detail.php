@@ -52,12 +52,19 @@
             <nav class="sidebar card mb-4" style="background-color:white; height:47rem">
                 <ul class="nav flex-column" id="nav_accordion">
                     <li>
-                        <a style="background-color:white;padding:0px 10px 0px 10px;height:110px" class="nav-link" href="#"> <img style="margin-top:15px; width:200px;" src="<?= base_url('assets/mbkm/') ?>img/map/oke.png" alt=""></a>
+                        <<<<<<< HEAD <a style="background-color:white;padding:0px 10px 0px 10px;height:110px" class="nav-link" href="#"> <img style="margin-top:15px; width:200px;" src="<?= base_url('assets/mbkm/') ?>img/map/oke.png" alt=""></a>
+                            =======
+                            <a style="background-color:white;padding:0px 10px 0px 10px;height:110px" class="nav-link" href="<?= base_url('home/index'); ?>"> <img style="margin-top:15px; width:200px;" src="<?= base_url('assets/mbkm/') ?>img/map/oke.png" alt=""></a>
+                            >>>>>>> 8af8fadef74fbb0ac6a83e5e516881e2418f611b
                     </li>
                     <li>
                         <div class="col-lg-10">
                             <!-- <div class="list" style="border:2px solid #0C4886; border-radius:0px 20px 20px 0px; margin-top:80px;background-color:#0C4886;height:55px">
                                 <p style="color:white;text-align:center;font-size:18px;margin-top:13px">List Data</p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8af8fadef74fbb0ac6a83e5e516881e2418f611b
                             </div> -->
                         </div>
                         <div class="col-lg-10">

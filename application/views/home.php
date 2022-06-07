@@ -156,9 +156,9 @@
             <h4>Media Sosial</h4>
             <ul>
                 <li><a href="">Facebook</a></li>
-                <li><a href="">Instagram</a></li>
+                <li><a href="https://www.instagram.com/mlnrfi_/">Instagram</a></li>
                 <li><a href="">Youtube</a></li>
-                <li><a href="">Twitter</a></li>
+                <li><a href="https://twitter.com/ijapangestu">Twitter</a></li>
             </ul>
         </div>
     </footer>
