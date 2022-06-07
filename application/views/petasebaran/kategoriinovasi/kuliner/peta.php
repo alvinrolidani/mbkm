@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?= base_url('assets/mbkm/') ?>style2.css">
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
@@ -45,36 +46,83 @@
     function getColor(d) {
         return d > 40 ? '#0F5304' :
             d > 30 ? '#1CBE0D' :
-            d > 20 ? '#B8E404' :
-            d > 10 ? '#DAEC0F' :
-            '#EC930F';
+            d > 20 ? '#67E404' :
+            d > 10 ? '#DFD828' :
+            '#FAFF00';
     }
 
-    <?php foreach ($kecamatan as $kecamatan) : ?>
-        var layersKecamatan = [];
-        var layer = {
-            layer: $.getJSON("<?= base_url('assets/datakecamatan/' . $kecamatan->shp) ?>", function(data) {
-                var Nama = '<?= $kecamatan->nama_kecamatan ?>';
 
-                function style1(feature) {
+
+
+    let geojson;
+    let loadJsonData;
+    var kategoriinovator = document.querySelector("#kategoriinovator");
+    var kategoriinovasi = document.querySelector("#kategoriinovasi");
+    var kategoritahun = document.querySelector("#tahun");
+
+
+    getGeoJson = async () => {
+        for (i = 0; i < kecamatan.length; i++) {
+            var data = kecamatan[i]
+            var Nama = data.nama_kecamatan
+
+            let url = `<?= base_url() ?>assets/datakecamatan/` + data.shp
+            let get = await fetch(url)
+            let json = await get.json();
+
+            geojson = L.geoJson(json, {
+                style: function(feature) {
                     return {
+                        color: 'white',
+                        fillColor: getColor(INOVATOR[Nama]),
                         weight: 2,
                         opacity: 1,
-                        color: 'white',
-                        dashArray: '3',
                         fillOpacity: 0.5,
-                        fillColor: getColor(HOTSPOT[Nama])
-                    };
+                        dashArray: 3
+                    }
                 }
-                geoLayer = L.geoJson(data, {
-                    style: style1
+            }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + Nama + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[Nama] + '<br><b>Inovator : </b>' + INOVATOR[Nama] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('detailinovasi/Kuliner/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
 
-                }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + Nama + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[Nama] + '<br><b>Inovator : </b>' + INOVATOR[Nama] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('detailinovasi/Kuliner/' . $kecamatan->id_kecamatan) ?>">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
-
-
-            })
         }
-    <?php endforeach; ?>
+    }
+    getGeoJson();
+
+
+    let changeData = async () => {
+        let url;
+        var inovasi = kategoriinovasi.options[kategoriinovasi.selectedIndex].value
+        var inovator = kategoriinovator.options[kategoriinovator.selectedIndex].value
+        var tahun = kategoritahun.options[kategoritahun.selectedIndex].value
+
+
+        if (inovasi == 'semua' && inovator == 'semua' && tahun == 'semua') {
+            url = "<?= base_url('home/semuadata') ?>"
+
+        } else if (inovasi != 'semua' && inovator == 'semua' && tahun == 'semua') {
+            window.location = "<?= base_url('kategoriinovasi/') ?>" + inovasi + ""
+
+        } else if (inovasi == 'semua' && inovator != 'semua' && tahun == 'semua') {
+            window.location = "<?= base_url('kategoriinovator/') ?>" + inovator + ""
+
+        } else if (inovasi == 'semua' && inovator == 'semua' && tahun != 'semua') {
+            url = "<?= base_url('home/dataTahun') ?>?tahun=" + tahun + ""
+
+        } else if (inovasi != 'semua' && inovator == 'semua' && tahun != 'semua') {
+            url = "<?= base_url('home/dataInovasiTahun') ?>?kategoriinovasi=" + inovasi + "&tahun=" + tahun + ""
+
+        } else if (inovasi == 'semua' && inovator != 'semua' && tahun != 'semua') {
+            url = "<?= base_url('home/dataInovatorTahun') ?>?kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+
+        } else {
+
+            url = "<?= base_url('home/getkategori') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+        }
+
+        let get = await fetch(url)
+        loadJsonData = await get.json()
+
+
+    }
 
     //Legend
     var legend = L.control({

@@ -15,7 +15,7 @@ class KategoriInovator extends CI_Controller
         $this->load->view('templates/sidebar_peta');
         $this->load->view('petasebaran/kategoriinovator/mahasiswa/peta', $data);
     }
-    public function sekolahmenengahpertama()
+    public function smp()
     {
         $data['kecamatan'] = $this->peta->get();
         $this->load->view('templates/header_peta');
@@ -50,14 +50,14 @@ class KategoriInovator extends CI_Controller
         $this->load->view('templates/sidebar_peta');
         $this->load->view('petasebaran/kategoriinovator/kecamatan/peta', $data);
     }
-    public function perangkatdesa()
+    public function perangkat_desa()
     {
         $data['kecamatan'] = $this->peta->get();
         $this->load->view('templates/header_peta');
         $this->load->view('templates/sidebar_peta');
         $this->load->view('petasebaran/kategoriinovator/perangkatdesa/peta', $data);
     }
-    public function masyarakat()
+    public function masyarakat_umum()
     {
         $data['kecamatan'] = $this->peta->get();
         $this->load->view('templates/header_peta');

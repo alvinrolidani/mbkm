@@ -12,7 +12,7 @@
     .info {
         padding: 10px 12px;
         font: 14px/16px Arial, Helvetica, sans-serif;
-        height: 160px;
+        height: 165px;
         background: white;
         background: rgba(255, 255, 255, 0.8);
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -32,7 +32,7 @@
 
     .legend i {
         width: 18px;
-        height: 20px;
+        height: 30px;
         float: left;
         margin-right: 8px;
         opacity: 0.7;
@@ -50,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/leaflet.css') ?>">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
     <link rel="stylesheet" href="<?= base_url('assets/js//leaflet-panel-layers-master/src/leaflet-panel-layers.css') ?>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">

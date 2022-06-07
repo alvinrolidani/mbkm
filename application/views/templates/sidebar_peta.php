@@ -1,7 +1,17 @@
+<style>
+    .filter nav .form-group select {
+        background: black;
+        color: white;
+        opacity: 0.6;
+        font-weight: bolder;
+        border-radius: 20px 20px 20px 20px;
+
+    }
+</style>
+
 <body>
     <div class="container-fluid">
         <div class="row">
-
 
             <div class="col-lg-10" id="title">
                 <div class="title" style="margin-left: 30px;">
@@ -25,53 +35,50 @@
         </div>
     </div>
 
-    <form action="<?= base_url('home/peta') ?>" method="get">
+    <?php
 
+    $kategoriinovasi = $this->db->get('bidang_inovasi')->result();
+    $kategoriinovator = $this->db->get('kategori_inovator')->result();
+    ?>
+    <div class="filter">
+        <nav>
+            <a href="<?= base_url('home/peta') ?>">
+                <img src="<?= base_url('assets/mbkm/') ?>img/reset.png" style="height:75px;width:65px;margin-top:-10px">
+            </a>
+            <div class="form-group">
+                <select name="kategoriinovasi" id="kategoriinovasi" class="form-control">
+                    <option value="" selected>Pilih Inovasi</option>
+                    <option value="semua" style="font-weight:bolder ;">Semua</option>
+                    <?php foreach ($kategoriinovasi as $a) : ?>
+                        <option value="<?= str_replace(' ', '_', $a->nama_bidang_inovasi) ?>" style="font-weight:bolder ;"><?= $a->nama_bidang_inovasi ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-        <div class="filter">
-            <nav>
+            <div class="form-group">
+                <select id="kategoriinovator" name="kategoriinovator" id="kategoriinovator" class="form-control" style="font-weight:bolder ;">
+                    <option value="" selected style="font-weight:bolder ;">Pilih Inovator</option>
+                    <option value="semua" style="font-weight:bolder ;">Semua</option>
+                    <?php foreach ($kategoriinovator as $b) : ?>
+                        <option value="<?= str_replace(' ', '_', $b->nama_kategori_inovator) ?>" style="font-weight:bolder ;"><?= $b->nama_kategori_inovator ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <select name="kategoriinovasi" class="form-control" style="font-weight:bolder ;">
-                        <option value="" style="font-weight:bolder ;">Pilih Inovasi</option>
-                        <option value="Kesehatan" style="font-weight:bolder ;">Kesehatan</option>
-                        <option value="Kuliner" style="font-weight:bolder ;">Kuliner</option>
-                        <option value="Pendidikan" style="font-weight:bolder ;">Pendidikan</option>
-                        <option value="Pemberantasan Kemiskinan" style="font-weight:bolder ;">Pemberantasan Kemiskinan</option>
-                        <option value="Pelayanan Masyarakat" style="font-weight:bolder ;">Pelayanan Masyarakat</option>
-                        <option value="Lingkungan" style="font-weight:bolder ;">Lingkungan</option>
-                        <option value="Peratanian" style="font-weight:bolder ;">Peratanian</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <select id="tahun" selected name="tahun" class="form-control" style="font-weight:bolder ;">
+                    <option value="">Pilih Tahun</option>
+                    <option value="semua" style="font-weight:bolder ;">Semua</option>
+                    <?php for ($i = 2016; $i <= date('Y'); $i++) : ?>
+                        <option value="<?= $i ?>" style="font-weight:bolder ;"><?= $i ?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <button onclick="changeData()" style="background: transparent;border:none;margin-top:-40px">
+                <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
+            </button>
 
-                <div class="form-group">
-                    <select id="inovator" name="kategoriinovator" class="form-control" style="font-weight:bolder ;">
-                        <option value="" style="font-weight:bolder ;">Pilih Inovator</option>
-                        <option value="Mahasiswa" style="font-weight:bolder ;">Mahasiswa</option>
-                        <option value="SMA/SMK" style="font-weight:bolder ;">SMA/SMK</option>
-                        <option value="SMP" style="font-weight:bolder ;">SMP</option>
-                        <option value="Dosen Peneliti" style="font-weight:bolder ;">Dosen Peneliti</option>
-                        <option value="Desa Kelurahan" style="font-weight:bolder ;">Desa Kelurahan</option>
-                        <option value="Kecamatan" style="font-weight:bolder ;">Kecamatan</option>
-                        <option value="Perangkat Desa" style="font-weight:bolder ;">Perangkat Desa</option>
-                        <option value="Masyarakat Umum" style="font-weight:bolder ;">Masyarakat Umum</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <select id="Tahun" class="form-control" style="font-weight:bolder ;">
-                        <option value="">Pilih Tahun</option>
-                        <?php for ($i = 2016; $i <= date('Y'); $i++) : ?>
-                            <option value="<?= $i ?>" style="font-weight:bolder ;"><?= $i ?></option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-
-                <button type="submit">
-                    <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
-                </button>
-
-            </nav>
-        </div>
+        </nav>
+    </div>
     </form>
 </body>

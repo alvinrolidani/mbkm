@@ -1,3 +1,50 @@
+<link rel="stylesheet" href="<?= base_url('assets/mbkm/') ?>style2.css">
+<form action="<?= base_url('home/peta') ?>" method="get">
+
+
+    <div class="filter">
+        <nav>
+
+            <div class="form-group">
+
+                <select name="kategoriinovasi" class="form-control" style="font-weight:bolder ;">
+                    <option value="" style="font-weight:bolder ;">Pilih Inovasi</option>
+                    <?php foreach ($kategoriinovasi as $a) : ?>
+                        <option value="<?= $a->nama_bidang_inovasi ?>" style="font-weight:bolder ;"><?= $a->nama_bidang_inovasi ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <select id="inovator" name="kategoriinovator" class="form-control" style="font-weight:bolder ;">
+                    <option value="" style="font-weight:bolder ;">Pilih Inovator</option>
+                    <?php foreach ($kategoriinovator as $a) : ?>
+                        <option value="<?= $a->nama_kategori_inovator ?>" style="font-weight:bolder ;"><?= $a->nama_kategori_inovator ?></option>
+                    <?php endforeach; ?>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select id="Tahun" class="form-control" style="font-weight:bolder ;">
+                    <option value="">Pilih Tahun</option>
+
+                    <?php for ($i = 2016; $i <= date('Y'); $i++) : ?>
+                        <option value="<?= $i ?>" style="font-weight:bolder ;"><?= $i ?></option>
+                    <?php endfor; ?>
+
+                </select>
+            </div>
+
+
+            <button type="submit">
+                <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
+            </button>
+
+        </nav>
+    </div>
+</form>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
@@ -5,7 +52,8 @@
 <script src="<?= base_url('assets/js//leaflet-panel-layers-master/src/leaflet-panel-layers.js') ?>"></script>
 <script src="<?= base_url('assets/js/') ?>leaflet.ajax.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="<?= base_url('kategoriinovasi/data/kecamatan') ?>"></script>
+<script src="<?= base_url('home/data/kecamatan') ?>"></script>
+<script src="<?= base_url('home/getkategori') . "?kategoriinovasi=" . $id . "&kategoriinovator=" . $idi ?>"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
@@ -21,6 +69,13 @@
     }
     echo "HOTSPOT = " . json_encode($data)
     ?>
+    // 
+    // $inovasi = $_GET['kategoriinovasi'];
+    // $inovator = $_GET['kategoriinovator'];
+    // $url = base_url("home/getkategori?kategoriinovasi='" . $inovasi . "&kategoriinovator='" . $inovator . "'");
+    // echo "API = " . json_encode($url);
+
+    // 
 
     //ambil data json dari count
 
@@ -41,7 +96,8 @@
         $data[$row->nama_kecamatan] = $query->num_rows();
     }
     echo "INOVATOR = " . json_encode($data); ?>
-    //mendapatkan warna berdasarkan jumlah
+    //mendapatkan warna berdasarkan jumla
+
     function getColor(d) {
         return d > 40 ? '#0F5304' :
             d > 30 ? '#1CBE0D' :
@@ -49,32 +105,60 @@
             d > 10 ? '#DAEC0F' :
             '#EC930F';
     }
+    let geojson;
+    // let jsonData = [{
+    //     'data': kategori,
+    // }]
+    let jsonData = [{
+        'data': kategori
+    }]
+    console.log(jsonData)
+    getGeoJson = async () => {
+        for (i = 0; i < kecamatan.length; i++) {
+            var data = kecamatan[i]
+            var NAMA = data.nama_kecamatan
+            let url = `<?= base_url() ?>assets/datakecamatan/` + data.shp
+            let get = await fetch(url)
+            let json = await get.json();
 
-    <?php foreach ($kecamatan as $kecamatan) : ?>
-        var layer = {
-            layer: $.getJSON("<?= base_url('assets/datakecamatan/' . $kecamatan->shp) ?>", function(data) {
-                var Nama = '<?= $kecamatan->nama_kecamatan ?>';
-
-                function style1(feature) {
+            geojson = L.geoJson(json, {
+                style: function(feature) {
                     return {
-                        weight: 2,
-                        opacity: 1,
-                        color: 'white',
-                        dashArray: '3',
-                        fillOpacity: 0.5,
-                        fillColor: getColor(HOTSPOT[Nama])
-                    };
+                        "color": 'white',
+                        'fillColor': getColor(HOTSPOT[NAMA]),
+                        "weight": 2,
+                        "opacity": 1,
+                        "fillOpacity": 0.5,
+                        "dashArray": 3
+                    }
                 }
-                geoLayer = L.geoJson(data, {
-                    style: style1
-
-                }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + Nama + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[Nama] + '<br><b>Inovator : </b>' + INOVATOR[Nama] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/' . $kecamatan->id_kecamatan) ?>">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
+            }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + NAMA + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[NAMA] + '<br><b>Inovator : </b>' + INOVATOR[NAMA] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
 
 
-            })
         }
-    <?php endforeach; ?>
+    }
+    getGeoJson();
 
+
+    // for (i = 0; i < kecamatan.length; i++) {
+    //     var data = kecamatan[i];
+    //     var NAMA = data.nama_kecamatan;
+    //     var layer = {
+    //         layer: new L.GeoJSON.AJAX(["<?= base_url() ?>assets/datakecamatan/" + data.shp], {
+    //             style: function(feature) {
+    //                 return {
+    //                     "color": 'white',
+    //                     'fillColor': getColor(HOTSPOT[NAMA]),
+    //                     "weight": 2,
+    //                     "opacity": 1,
+    //                     "fillOpacity": 0.5,
+    //                     "dashArray": 3
+    //                 }
+
+    //             },
+    //         }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + NAMA + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[NAMA] + '<br><b>Inovator : </b>' + INOVATOR[NAMA] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
+    //     }
+    // }
     //Legend
     var legend = L.control({
         position: 'bottomleft'
@@ -97,6 +181,5 @@
 
     legend.addTo(map);
 </script>
-
 
 </html>
