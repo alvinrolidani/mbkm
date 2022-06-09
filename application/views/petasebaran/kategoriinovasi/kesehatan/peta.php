@@ -75,7 +75,7 @@
                 style: function(feature) {
                     return {
                         color: 'white',
-                        fillColor: getColor(INOVATOR[Nama]),
+                        fillColor: getColor(HOTSPOT[Nama]),
                         weight: 2,
                         opacity: 1,
                         fillOpacity: 0.5,

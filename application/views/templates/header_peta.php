@@ -3,7 +3,7 @@
 <style>
     #mapgis {
         height: 100%;
-        width: 100rem;
+        width: 96rem;
         transform: translateX(-18px);
 
 
