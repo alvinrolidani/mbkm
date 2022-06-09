@@ -13,7 +13,7 @@
 <script src="<?= base_url('home/dataSemuaTahun') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator  ?>"></script>
 <script src="<?= base_url('home/semuadata') ?>"></script>
 <script src="<?= base_url('home/getkategori') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
-
+<script src="<?= base_url('home/data') ?>"></script>
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
@@ -38,23 +38,24 @@
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox/streets-v11'
-    }).addTo(map)
+    });
+    map.addLayer(osm)
 
 
     //mendapatkan warna berdasarkan jumla
 
     function getColor(d) {
-        return d > 40 ? '#0F5304' :
-            d > 30 ? '#1CBE0D' :
-            d > 20 ? '#67E404' :
-            d > 10 ? '#DFD828' :
+        return d > 5 ? '#0F5304' :
+            d > 4 ? '#1CBE0D' :
+            d > 3 ? '#67E404' :
+            d > 2 ? '#DFD828' :
             '#FAFF00';
     }
 
+    let geoJsonLayer = kecamatan;
 
-
-
-
+    let kecamatanGroup = L.layerGroup();
+    let url;
     let geojson;
     let loadJsonData;
     var kategoriinovator = document.querySelector("#kategoriinovator");
@@ -63,8 +64,8 @@
 
 
     getGeoJson = async () => {
-        for (i = 0; i < kecamatan.length; i++) {
-            var data = kecamatan[i]
+        for (i in geoJsonLayer) {
+            var data = geoJsonLayer[i]
             var NAMA = data.nama_kecamatan
 
             let url = `<?= base_url() ?>assets/datakecamatan/` + data.shp
@@ -73,31 +74,16 @@
 
             geojson = L.geoJson(json, {
                 style: style
-            }).addTo(map)
-
+            }).addTo(kecamatanGroup)
         }
     }
-    getGeoJson()
+    getGeoJson().then(() => {
+        kecamatanGroup.addTo(map)
+    })
 
-    function style(feature) {
 
-        totaldata = 0
-        for (i in loadJsonData) {
-            if (loadJsonData[i].nama_kecamatan === feature.properties.WADMKC) {
-                totaldata = loadJsonData[i].total
-            }
-        }
-        return {
-            color: 'white',
-            fillColor: getColor(totaldata),
-            weight: 2,
-            opacity: 1,
-            fillOpacity: 0.5,
-            dashArray: 3
-        }
-    }
-    let changeData = () => {
-        let url;
+    let changeData = async () => {
+
         var inovasi = kategoriinovasi.options[kategoriinovasi.selectedIndex].value
         var inovator = kategoriinovator.options[kategoriinovator.selectedIndex].value
         var tahun = kategoritahun.options[kategoritahun.selectedIndex].value
@@ -127,12 +113,32 @@
 
             url = "<?= base_url('home/getkategori') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
         }
-
-        // let get = await fetch(url)
-        // loadJsonData = await get.json()
-        console.log(url)
+        let get = await fetch(url);
+        loadJsonData = await get.json();
+        console.log(loadJsonData)
+        kecamatanGroup.clearLayers();
+        getGeoJson();
 
     }
+
+    function style(feature) {
+        totaldata = 0
+        for (i in loadJsonData) {
+            if (loadJsonData[i].nama_kecamatan === feature.properties.WADMKC) {
+                totaldata = loadJsonData[i].total
+            }
+        }
+        return {
+            color: 'white',
+            fillColor: getColor(totaldata),
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.5,
+            dashArray: 3
+        }
+    }
+
+
 
     // for (i = 0; i < kecamatan.length; i++) {
     //     var data = kecamatan[i];
@@ -161,13 +167,13 @@
     legend.onAdd = function(map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [1, 10, 20, 30, 40],
+            grades = [0, 2, 3, 4, 5],
             labels = [];
 
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' + grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' + grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + ' Inovasi <br>' : '+ Inovasi');
         }
 
         return div;

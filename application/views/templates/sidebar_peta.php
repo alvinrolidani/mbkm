@@ -50,7 +50,7 @@
                     <option value="" selected>Pilih Inovasi</option>
                     <option value="semua" style="font-weight:bolder ;">Semua</option>
                     <?php foreach ($kategoriinovasi as $a) : ?>
-                        <option value="<?= str_replace(' ', '_', $a->nama_bidang_inovasi) ?>" style="font-weight:bolder ;"><?= $a->nama_bidang_inovasi ?></option>
+                        <option value="<?= $a->id_bidang_inovasi ?>" style="font-weight:bolder ;"><?= $a->nama_bidang_inovasi ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -60,7 +60,7 @@
                     <option value="" selected style="font-weight:bolder ;">Pilih Inovator</option>
                     <option value="semua" style="font-weight:bolder ;">Semua</option>
                     <?php foreach ($kategoriinovator as $b) : ?>
-                        <option value="<?= str_replace(' ', '_', $b->nama_kategori_inovator) ?>" style="font-weight:bolder ;"><?= $b->nama_kategori_inovator ?></option>
+                        <option value="<?= $b->id_kategori_inovator ?>" style="font-weight:bolder ;"><?= $b->nama_kategori_inovator ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -74,7 +74,7 @@
                     <?php endfor; ?>
                 </select>
             </div>
-            <button onclick="changeData()" style="background: transparent;border:none;margin-top:-40px">
+            <button onclick="changeData(value)" style="background: transparent;border:none;margin-top:-40px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
             </button>
 
