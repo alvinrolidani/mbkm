@@ -7,29 +7,15 @@
 <script src="<?= base_url('assets/js//leaflet-panel-layers-master/src/leaflet-panel-layers.js') ?>"></script>
 <script src="<?= base_url('assets/js/') ?>leaflet.ajax.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="<?= base_url('home/dataInovasiTahun') . "?kategoriinovasi=" . $inovasi . "&tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('home/dataInovatorTahun') . "?kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('home/dataTahun') . "?tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('home/dataSemuaTahun') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator  ?>"></script>
-<script src="<?= base_url('home/semuadata') ?>"></script>
-<script src="<?= base_url('home/getkategori') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('home/data') ?>"></script>
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+<script src="<?= base_url('api/dataInovasiTahun') . "?kategoriinovasi=" . $inovasi . "&tahun=" . $tahun ?>"></script>
+<script src="<?= base_url('api/dataInovatorTahun') . "?kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
+<script src="<?= base_url('api/dataTahun') . "?tahun=" . $tahun ?>"></script>
+<script src="<?= base_url('api/dataSemuaTahun') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator  ?>"></script>
+<script src="<?= base_url('api/semuadata') ?>"></script>
+<script src="<?= base_url('api/getkategori') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
+<script src="<?= base_url('api/data') ?>"></script>
+
 <script>
-    // 
-    // $inovasi = $_GET['kategoriinovasi'];
-    // $inovator = $_GET['kategoriinovator'];
-    // $url = base_url("home/getkategori?kategoriinovasi='" . $inovasi . "&kategoriinovator='" . $inovator . "'");
-    // echo "API = " . json_encode($url);
-
-    // 
-
-    //ambil data json dari count
-
     //menampilkan map
     var map = L.map('mapgis').setView([-6.588710080503552, 106.79743511461204], 10.5)
 
@@ -53,7 +39,6 @@
     }
 
     let geoJsonLayer = kecamatan;
-
     let kecamatanGroup = L.layerGroup();
     let url;
     let geojson;
@@ -63,6 +48,7 @@
     var kategoritahun = document.querySelector("#tahun");
 
 
+    //mengambil geojson
     getGeoJson = async () => {
         for (i in geoJsonLayer) {
             var data = geoJsonLayer[i]
@@ -73,6 +59,7 @@
             let json = await get.json();
 
             geojson = L.geoJson(json, {
+                onEachFeature: popUp,
                 style: style
             }).addTo(kecamatanGroup)
         }
@@ -82,6 +69,7 @@
     })
 
 
+    //change data kategori
     let changeData = async () => {
 
         var inovasi = kategoriinovasi.options[kategoriinovasi.selectedIndex].value
@@ -90,28 +78,28 @@
 
 
         if (inovasi == 'semua' && inovator == 'semua' && tahun == 'semua') {
-            url = "<?= base_url('home/semuadata') ?>"
+            url = "<?= base_url('api/semuadata/') ?>"
 
         } else if (inovasi != 'semua' && inovator == 'semua' && tahun == 'semua') {
-            window.location = "<?= base_url('kategoriinovasi/') ?>" + inovasi + ""
+            url = "<?= base_url('api/dataInovasi') ?>?kategoriinovasi=" + inovasi + ""
 
         } else if (inovasi == 'semua' && inovator != 'semua' && tahun == 'semua') {
-            window.location = "<?= base_url('kategoriinovator/') ?>" + inovator + ""
+            url = "<?= base_url('api/dataInovator') ?>?kategoriinovator=" + inovator + ""
 
         } else if (inovasi == 'semua' && inovator == 'semua' && tahun != 'semua') {
-            url = "<?= base_url('home/dataTahun') ?>?tahun=" + tahun + ""
+            url = "<?= base_url('api/dataTahun') ?>?tahun=" + tahun + ""
 
         } else if (inovasi != 'semua' && inovator == 'semua' && tahun != 'semua') {
-            url = "<?= base_url('home/dataInovasiTahun') ?>?kategoriinovasi=" + inovasi + "&tahun=" + tahun + ""
+            url = "<?= base_url('api/dataInovasiTahun') ?>?kategoriinovasi=" + inovasi + "&tahun=" + tahun + ""
 
         } else if (inovasi == 'semua' && inovator != 'semua' && tahun != 'semua') {
-            url = "<?= base_url('home/dataInovatorTahun') ?>?kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+            url = "<?= base_url('api/dataInovatorTahun') ?>?kategoriinovator=" + inovator + "&tahun=" + tahun + ""
 
         } else if (inovasi != 'semua' && inovator != 'semua' && tahun == 'semua') {
-            url = "<?= base_url('home/dataSemuaTahun') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + ""
+            url = "<?= base_url('api/dataSemuaTahun') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + ""
         } else {
 
-            url = "<?= base_url('home/getkategori') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+            url = "<?= base_url('api/getkategori') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
         }
         let get = await fetch(url);
         loadJsonData = await get.json();
@@ -121,11 +109,58 @@
 
     }
 
+
+    // popup
+    function popUp(f, l) {
+
+        let html = '';
+        for (i in loadJsonData) {
+            var data = loadJsonData[i]
+            if (data.nama_kecamatan === f.properties.WADMKC) {
+                var inovasi = kategoriinovasi.options[kategoriinovasi.selectedIndex].value
+                var inovator = kategoriinovator.options[kategoriinovator.selectedIndex].value
+                var tahun = kategoritahun.options[kategoritahun.selectedIndex].value
+
+                if (inovasi == 'semua' && inovator == 'semua' && tahun == 'semua') {
+                    url = "<?= base_url('home/detail/') ?>" + data.id_kecamatan + ""
+
+                } else if (inovasi != 'semua' && inovator == 'semua' && tahun == 'semua') {
+                    url = "<?= base_url('home/detailInovasi/') ?>" + data.id_kecamatan + "?kategoriinovasi=" + inovasi + ""
+
+
+                } else if (inovasi == 'semua' && inovator != 'semua' && tahun == 'semua') {
+                    url = "<?= base_url('home/detailInovator/') ?>" + data.id_kecamatan + "?kategoriinovator=" + inovator + ""
+
+                } else if (inovasi == 'semua' && inovator == 'semua' && tahun != 'semua') {
+                    url = "<?= base_url('home/detailTahun/') ?>" + data.id_kecamatan + "?tahun=" + tahun + ""
+
+                } else if (inovasi != 'semua' && inovator == 'semua' && tahun != 'semua') {
+                    url = "<?= base_url('home/detailInovasiTahun/') ?>" + data.id_kecamatan + "?kategoriinovasi=" + inovasi + "&tahun=" + tahun + ""
+
+                } else if (inovasi == 'semua' && inovator != 'semua' && tahun != 'semua') {
+                    url = "<?= base_url('home/detailInovatorTahun/') ?>" + data.id_kecamatan + "?kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+
+                } else if (inovasi != 'semua' && inovator != 'semua' && tahun == 'semua') {
+                    url = "<?= base_url('home/detailSemuaTahun/') ?>" + data.id_kecamatan + "?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + ""
+                } else {
+
+                    url = "<?= base_url('home/detailgetkategori/') ?>" + data.id_kecamatan + "?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+                }
+                html += '<b style="font-size:15px">Kecamatan ' + data.nama_kecamatan + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + data.total_inovasi +
+                    '<br><b>Inovator : </b>' + data.total_inovator + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="' + url + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>'
+
+            }
+
+        }
+        l.bindPopup(html), l.bindTooltip(f.properties.WADMKC)
+    }
+
+    // warna peta
     function style(feature) {
         totaldata = 0
         for (i in loadJsonData) {
             if (loadJsonData[i].nama_kecamatan === feature.properties.WADMKC) {
-                totaldata = loadJsonData[i].total
+                totaldata = loadJsonData[i].total_inovasi
             }
         }
         return {
@@ -138,27 +173,13 @@
         }
     }
 
-
-
-    // for (i = 0; i < kecamatan.length; i++) {
-    //     var data = kecamatan[i];
-    //     var NAMA = data.nama_kecamatan;
-    //     var layer = {
-    //         layer: new L.GeoJSON.AJAX(["<?= base_url() ?>assets/datakecamatan/" + data.shp], {
-    //             style: function(feature) {
-    //                 return {
-    //                     "color": 'white',
-    //                     'fillColor': getColor(HOTSPOT[NAMA]),
-    //                     "weight": 2,
-    //                     "opacity": 1,
-    //                     "fillOpacity": 0.5,
-    //                     "dashArray": 3
-    //                 }
-
-    //             },
-    //         }).addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + NAMA + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[NAMA] + '<br><b>Inovator : </b>' + INOVATOR[NAMA] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>')
-    //     }
-    // }
+    function onEachFeature(feature, layer) {
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: popUp()
+        });
+    }
     //Legend
     var legend = L.control({
         position: 'bottomleft'
@@ -181,6 +202,5 @@
 
     legend.addTo(map);
 </script>
-<!-- .addTo(map).bindPopup('<b style="font-size:15px">Kecamatan ' + NAMA + '</b><hr style="color:#f5ce42;margin-top:1px"size="7px">' + '<b>Inovasi : </b>' + HOTSPOT[NAMA] + '<br><b>Inovator : </b>' + INOVATOR[NAMA] + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="<?= base_url('home/detail/') ?>' + data.id_kecamatan + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>') -->
 
 </html>

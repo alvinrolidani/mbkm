@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/js//leaflet-panel-layers-master/src/leaflet-panel-layers.css') ?>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
-    <script src="<?= base_url('home/data') ?>"></script>
+
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
