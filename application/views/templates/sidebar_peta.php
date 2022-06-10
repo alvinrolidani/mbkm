@@ -42,8 +42,8 @@
     ?>
     <div class="filter">
         <nav>
-            <a href="<?= base_url('home/peta') ?>">
-                <img src="<?= base_url('assets/mbkm/') ?>img/reset.png" style="height:75px;width:65px;margin-top:-10px">
+            <a href="<?= base_url('home/') ?>">
+                <img src="<?= base_url('assets/mbkm/') ?>img/back.png" style="height:40px;width:40px;margin-top:-3px">
             </a>
             <div class="form-group">
                 <select name="kategoriinovasi" id="kategoriinovasi" class="form-control">
@@ -74,9 +74,12 @@
                     <?php endfor; ?>
                 </select>
             </div>
-            <button onclick="changeData(value)" style="background: transparent;border:none;margin-top:-40px">
+            <button onclick="changeData(value)" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
             </button>
+            <a href="<?= base_url('home/peta') ?>">
+                <img src="<?= base_url('assets/mbkm/') ?>img/reset.png" style="height:40px;width:40px;margin-top:-3px">
+            </a>
 
         </nav>
     </div>
