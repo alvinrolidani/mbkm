@@ -42,7 +42,9 @@
     ?>
     <div class="filter">
         <nav>
-
+            <a href="<?= base_url('home') ?>">
+                <img src="<?= site_url('assets/mbkm/img/Vector.png') ?>" alt="">
+            </a>
             <div class="form-group">
                 <select name="kategoriinovasi" id="kategoriinovasi" class="form-control">
 
@@ -75,7 +77,7 @@
             <button onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
             </button>
-            <button onclick="reset()">
+            <button onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png" style="height:40px;width:40px;margin-top:-3px">
             </button>
 
