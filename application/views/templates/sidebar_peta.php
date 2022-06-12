@@ -5,7 +5,6 @@
         opacity: 0.6;
         font-weight: bolder;
         border-radius: 20px 20px 20px 20px;
-
     }
 </style>
 
@@ -18,6 +17,9 @@
                     <ul>
                         <li><img src="<?= base_url('assets/mbkm/') ?>img/logo kab bogor 1.png" alt="" style="width: 50px;"></li>
                         <li><img src="<?= base_url('assets/mbkm/') ?>img/sidebar/text.png"></li>
+                        <marquee scrollamount="10" behavior="alternate">
+                            <h4><strong>Cara penggunaan: Silahkan filter terlebih dahulu untuk melihat jumlah inovasi</strong></h4>
+                        </marquee>
                     </ul>
 
 
@@ -26,7 +28,9 @@
 
                 <div class="row">
                     <div class="col-lg-10">
-                        <img src="<?= base_url('assets/mbkm/') ?>img/map/chart.png" alt="" style="width: 1536px; object-fit: cover; transform: translateX(-27px) translateY(6px);">
+                        <div style="width: 600px;height: 600px">
+                            <canvas id="myChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,11 +44,10 @@
     $kategoriinovasi = $this->db->get('bidang_inovasi')->result();
     $kategoriinovator = $this->db->get('kategori_inovator')->result();
     ?>
-    <div class="filter">
+    <div class=" filter">
         <nav>
-            <a href="<?= base_url('home') ?>">
-                <img src="<?= site_url('assets/mbkm/img/Vector.png') ?>" alt="">
-            </a>
+
+
             <div class="form-group">
                 <select name="kategoriinovasi" id="kategoriinovasi" class="form-control">
 
@@ -74,10 +77,10 @@
                     <?php endfor; ?>
                 </select>
             </div>
-            <button onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
+            <button title="Filter" onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
             </button>
-            <button onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">
+            <button title="Reset" onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png">
             </button>
 

@@ -19,6 +19,7 @@ class Home extends CI_Controller
 		$inovator = $this->input->get('kategoriinovator');
 		$inovasi = $this->input->get('kategoriinovasi');
 		$tahun = $this->input->get('tahun');
+
 		$data['tahun'] = $tahun;
 		$data['inovasi'] = $inovasi;
 		$data['inovator'] = $inovator;

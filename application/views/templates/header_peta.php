@@ -2,9 +2,10 @@
 <html lang="en">
 <style>
     #mapgis {
-        height: 100%;
+        height: 80%;
         width: 96rem;
         transform: translateX(-18px);
+        margin-top: 20px;
 
 
     }
