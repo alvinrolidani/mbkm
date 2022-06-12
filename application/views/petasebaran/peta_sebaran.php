@@ -14,18 +14,25 @@
 <script src="<?= base_url('api/semuadata') ?>"></script>
 <script src="<?= base_url('api/getkategori') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
 <script src="<?= base_url('api/data') ?>"></script>
+<script src="<?= base_url('api/reset') ?>"></script>
 
 <script>
     //menampilkan map
-    var map = L.map('mapgis').setView([-6.588710080503552, 106.79743511461204], 10.5)
+    var map = L.map('mapgis', {
+        center: [-6.588710080503552, 106.79743511461204],
+        zoomControl: false,
+        zoom: 10.5
+    })
 
     let osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox/streets-v11'
-    });
-    map.addLayer(osm)
+    }).addTo(map)
+    L.control.zoom({
+        position: 'bottomright'
+    }).addTo(map);
 
 
     //mendapatkan warna berdasarkan jumla
@@ -35,7 +42,8 @@
             d > 4 ? '#1CBE0D' :
             d > 3 ? '#67E404' :
             d > 2 ? '#DFD828' :
-            '#FAFF00';
+            d > 0 ? '#FAFF00' :
+            '#686869';
     }
 
     let geoJsonLayer = kecamatan;
@@ -154,7 +162,14 @@
         }
         l.bindPopup(html), l.bindTooltip(f.properties.WADMKC)
     }
-
+    let reset = async () => {
+        url = "<?= base_url('api/reset') ?>";
+        let get = await fetch(url);
+        loadJsonData = await get.json();
+        console.log(loadJsonData)
+        kecamatanGroup.clearLayers();
+        getGeoJson();
+    }
     // warna peta
     function style(feature) {
         totaldata = 0
@@ -188,13 +203,14 @@
     legend.onAdd = function(map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 2, 3, 4, 5],
+            grades = [1, 2, 3, 4, 5],
             labels = [];
-
+        div.innerHTML = '<i style="background:#686869"></i> No data<br>';
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' + grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + ' Inovasi <br>' : '+ Inovasi');
+                '<i style = "background:' + getColor(grades[i] + 1) + '"></i> ' + grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + ' Inovasi <br>' : '+ Inovasi');
+
         }
 
         return div;

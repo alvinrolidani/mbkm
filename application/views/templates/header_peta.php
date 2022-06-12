@@ -12,7 +12,7 @@
     .info {
         padding: 10px 12px;
         font: 14px/16px Arial, Helvetica, sans-serif;
-        height: 165px;
+        height: 200px;
         background: white;
         background: rgba(255, 255, 255, 0.8);
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);

@@ -187,4 +187,18 @@ class Api extends CI_Controller
         }
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
+    public function reset()
+    {
+        header('Content-Type:application/json');
+        $response = [];
+        $data = [
+            'id_kecamatan' => 0,
+            'nama_kecamatan' => 0,
+            'total_inovasi' =>  0,
+            'total_inovator' => 0
+        ];
+        $response[] = $data;
+
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
 }

@@ -42,13 +42,11 @@
     ?>
     <div class="filter">
         <nav>
-            <a href="<?= base_url('home/peta') ?>">
-                <img src="<?= base_url('assets/mbkm/') ?>img/reset.png" style="height:75px;width:65px;margin-top:-10px">
-            </a>
+
             <div class="form-group">
                 <select name="kategoriinovasi" id="kategoriinovasi" class="form-control">
-                    <option value="" selected>Pilih Inovasi</option>
-                    <option value="semua" style="font-weight:bolder ;">Semua</option>
+
+                    <option value="semua" style="font-weight:bolder ;">Seluruh Kategori Inovasi</option>
                     <?php foreach ($kategoriinovasi as $a) : ?>
                         <option value="<?= $a->id_bidang_inovasi ?>" style="font-weight:bolder ;"><?= $a->nama_bidang_inovasi ?></option>
                     <?php endforeach; ?>
@@ -57,8 +55,8 @@
 
             <div class="form-group">
                 <select id="kategoriinovator" name="kategoriinovator" id="kategoriinovator" class="form-control" style="font-weight:bolder ;">
-                    <option value="" selected style="font-weight:bolder ;">Pilih Inovator</option>
-                    <option value="semua" style="font-weight:bolder ;">Semua</option>
+
+                    <option value="semua" style="font-weight:bolder ;">Seluruh Kategori Inovator</option>
                     <?php foreach ($kategoriinovator as $b) : ?>
                         <option value="<?= $b->id_kategori_inovator ?>" style="font-weight:bolder ;"><?= $b->nama_kategori_inovator ?></option>
                     <?php endforeach; ?>
@@ -67,16 +65,20 @@
 
             <div class="form-group">
                 <select id="tahun" selected name="tahun" class="form-control" style="font-weight:bolder ;">
-                    <option value="">Pilih Tahun</option>
-                    <option value="semua" style="font-weight:bolder ;">Semua</option>
+
+                    <option value="semua" style="font-weight:bolder ;">Seluruh Tahun</option>
                     <?php for ($i = 2016; $i <= date('Y'); $i++) : ?>
                         <option value="<?= $i ?>" style="font-weight:bolder ;"><?= $i ?></option>
                     <?php endfor; ?>
                 </select>
             </div>
-            <button onclick="changeData(value)" style="background: transparent;border:none;margin-top:-40px">
+            <button onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
             </button>
+            <button onclick="reset()">
+                <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png" style="height:40px;width:40px;margin-top:-3px">
+            </button>
+
 
         </nav>
     </div>
