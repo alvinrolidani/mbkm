@@ -78,7 +78,7 @@
                 <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
             </button>
             <button onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">
-                <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png" style="height:40px;width:40px;margin-top:-3px">
+                <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png">
             </button>
 
 
