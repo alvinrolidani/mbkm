@@ -5,7 +5,6 @@
         height: 80%;
         width: 96rem;
         transform: translateX(-18px);
-        margin-top: 20px;
 
 
     }
