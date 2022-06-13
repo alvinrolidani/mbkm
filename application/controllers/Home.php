@@ -60,7 +60,7 @@ class Home extends CI_Controller
 
 		$data['inovasi'] = $inovasi->result();
 		$data['inovator'] = $inovator->result();
-		$data['tb_kecamatan'] = $this->peta->namaKecamatan($where, 'tb_kecamatan')->result();
+		$data['kecamatan'] = $this->peta->namaKecamatan($where, 'tb_kecamatan')->result();
 		$this->load->view('templates/header_peta.php');
 		$this->load->view('petasebaran/detail', $data);
 	}
