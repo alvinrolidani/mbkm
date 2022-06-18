@@ -15,18 +15,10 @@
             <div class="col-lg-10" id="title">
                 <div class="title" style="margin-left: 30px;">
                     <ul>
-                        <li>
-                            <a href="<?= base_url('home') ?>">
-                                <img src="<?= base_url('assets/mbkm/') ?>img/logo kab bogor 1.png" alt="" style="width: 50px;">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url('home') ?>">
-                                <img src="<?= base_url('assets/mbkm/') ?>img/sidebar/text.png">
-                            </a>
-                        </li>
+                        <li><a href="<?= base_url('home/') ?>"> <img src="<?= base_url('assets/mbkm/') ?>img/logo kab bogor 1.png" alt="" style="width: 50px;"></a></li>
+                        <li><a href="<?= base_url('home/') ?>"><img src="<?= base_url('assets/mbkm/') ?>img/sidebar/text.png"></a></li>
                         <marquee scrollamount="10" behavior="alternate">
-                            <h4><strong>Cara penggunaan: Silahkan filter terlebih dahulu untuk melihat jumlah inovasi</strong></h4>
+                            <h5><strong>Cara penggunaan: Silahkan filter terlebih dahulu untuk melihat jumlah inovasi</strong></h5>
                         </marquee>
                     </ul>
 
@@ -36,7 +28,7 @@
 
                 <div class="row">
                     <div class="col-lg-10">
-                        <div style="width: 600px;height: 600px">
+                        <div style="width: 600px;height: 500px">
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
@@ -86,7 +78,7 @@
                 </select>
             </div>
             <button title="Filter" onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
-                <img src="<?= base_url('assets/mbkm/') ?>img/vector (1).png">
+                <img src="<?= base_url('assets/mbkm/') ?>img/filter.png">
             </button>
             <button title="Reset" id="reset" onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png">

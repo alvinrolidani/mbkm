@@ -7,6 +7,12 @@
         box-shadow: 0 10px 10px -10px red inset;
         margin-top: 1px;
     }
+
+    .leaflet-tooltip.leaf {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
 </style>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -52,8 +58,8 @@
         return d > 40 ? '#0F5304' :
             d > 30 ? '#1CBE0D' :
             d > 20 ? '#67E404' :
-            d > 10 ? '#DFD828' :
-            d > 0 ? '#FAFF00' :
+            d > 10 ? '#E15E03' :
+            d > 0 ? '#FFA262' :
             '#686869';
     }
 
@@ -240,12 +246,16 @@
                         url = "<?= base_url('home/detailgetkategori/') ?>" + data.id_kecamatan + "?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
                     }
                     html = '<b style="font-size:15px">Kecamatan ' + data.nama_kecamatan + '</b><hr>' + '<b>Inovasi : </b>' + data.total_inovasi +
-                        '<br><b>Inovator : </b>' + data.total_inovator + '<br><b>Instansi : </b>' + data.total_instansi + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="' + url + '">Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>'
+                        '<br><b>Inovator : </b>' + data.total_inovator + '<br><b>Instansi : </b>' + data.total_instansi + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="' + url + '"><hr>Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>'
 
                 }
 
             }
-            layer.bindPopup(html), layer.bindTooltip(feature.properties.WADMKC)
+            layer.bindPopup(html), layer.bindTooltip(feature.properties.WADMKC, {
+                permanent: true,
+                direction: "center",
+                className: "leaf"
+            })
         }
         layer.on({
             mouseover: highlightFeature,
