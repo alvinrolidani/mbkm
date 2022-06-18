@@ -26,24 +26,7 @@
 <script src="<?= base_url('api/reset') ?>"></script>
 <script src="<?= base_url('api/tahunGrafik') ?>"></script>
 <script src="<?= base_url('api/grafikData') ?>"></script>
-<script>
-    date = new Date().getFullYear()
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'Grafik Inovasi Per Tahun',
-                data: [12, 19, 3, 23, 2, 3],
-                backgroundColor: ['#0C4886'],
-                borderColor: ['#0C4886'],
-                borderWidth: 1,
-                borderRadius: 15
-            }]
-        }
-    });
-</script>
+
 <script>
     //menampilkan map
     var map = L.map('mapgis', {
@@ -139,9 +122,33 @@
         }
         let get = await fetch(url);
         loadJsonData = await get.json();
-
         kecamatanGroup.clearLayers();
-        getGeoJson();
+        getGeoJson().then(() => {
+
+            var ctx = document.getElementById("myChart").getContext('2d');
+            labels = [];
+            value = [];
+            for (i in loadJsonData) {
+                labels.push(loadJsonData[i].nama_kecamatan);
+                value.push(loadJsonData[i].total_inovasi);
+            }
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Grafik Inovasi Per Tahun',
+                        data: value,
+                        backgroundColor: ['#0C4886'],
+                        borderColor: ['#0C4886'],
+                        borderWidth: 1,
+                        borderRadius: 15
+                    }]
+                }
+            });
+
+
+        });
 
     }
 
@@ -151,9 +158,13 @@
         url = "<?= base_url('api/reset') ?>";
         let get = await fetch(url);
         loadJsonData = await get.json();
-
         kecamatanGroup.clearLayers();
-        getGeoJson();
+        getGeoJson().then(() => {
+            var ctx = document.getElementById("myChart");
+            let html = '';
+            ctx.innerHTML = html;
+
+        })
     }
     // warna peta
     function style(feature) {

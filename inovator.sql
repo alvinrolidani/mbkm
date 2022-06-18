@@ -14,11 +14,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Dumping database structure for koysmyid_go_inovator
-CREATE DATABASE IF NOT EXISTS `koysmyid_go_inovator` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `koysmyid_go_inovator`;
-
 -- Dumping structure for table koysmyid_go_inovator.akun
 CREATE TABLE IF NOT EXISTS `akun` (
   `id_akun` int(11) NOT NULL AUTO_INCREMENT,
@@ -1101,7 +1096,7 @@ CREATE TABLE IF NOT EXISTS `inovator` (
   KEY `id_instansi` (`id_instansi`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=440 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table koysmyid_go_inovator.inovator: ~426 rows (approximately)
+-- Dumping data for table koysmyid_go_inovator.inovator: ~427 rows (approximately)
 INSERT INTO `inovator` (`id_inovator`, `nama_inovator`, `nik`, `tgl_lahir`, `jenis_kelamin`, `alamat`, `email`, `no_telp`, `id_kategori_inovator`, `id_instansi`, `id_kecamatan`, `id_desa`, `foto_inovator`, `latitude`, `longitude`, `id_akun`) VALUES
 	(1, 'Iman setiadi', NULL, NULL, 'L', 'Parung Panjang', NULL, NULL, '8', NULL, 320120, 232, '1.png', NULL, NULL, NULL),
 	(2, 'Febriyanti Wulandari', NULL, NULL, 'P', 'Babakan Madang', NULL, NULL, '8', NULL, 320105, 58, '2.png', NULL, NULL, NULL),
@@ -1553,7 +1548,7 @@ CREATE TABLE IF NOT EXISTS `kategori_inovator` (
   PRIMARY KEY (`id_kategori_inovator`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table koysmyid_go_inovator.kategori_inovator: ~9 rows (approximately)
+-- Dumping data for table koysmyid_go_inovator.kategori_inovator: ~10 rows (approximately)
 INSERT INTO `kategori_inovator` (`id_kategori_inovator`, `nama_kategori_inovator`) VALUES
 	(1, 'SD / MI / SEDERAJAT'),
 	(2, 'SMP/ MTS / SEDERAJAT'),
@@ -1647,7 +1642,7 @@ CREATE TABLE IF NOT EXISTS `token_aktivasi` (
   CONSTRAINT `token_aktivasi_ibfk_1` FOREIGN KEY (`id_akun`) REFERENCES `akun` (`id_akun`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table koysmyid_go_inovator.token_aktivasi: ~0 rows (approximately)
+-- Dumping data for table koysmyid_go_inovator.token_aktivasi: ~1 rows (approximately)
 INSERT INTO `token_aktivasi` (`id_token_aktivasi`, `id_akun`, `token`, `email`, `waktu_token_aktivasi`) VALUES
 	(22, 667, 'uj1Jg2CrtY83TG7jNHfSOoW8OcEFaPf4mu1xmyqfR1ZA5YD1cY', 'rpluikase@gmail.com', '2022-06-17 21:34:57');
 

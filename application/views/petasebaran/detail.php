@@ -159,8 +159,8 @@
                                     <textarea class="form-control" disabled><?= $a->manfaat_inovasi ?></textarea>
                                 <?php endif; ?>
                                 <div class="tanggal">
-                                    <h6>Tanggal</h6>
-                                    <input type="text" class="form-control" disabled value="<?= format_indo(date('Y-m-d', strtotime($a->created_at))) ?>">
+                                    <h6>Tahun Pembuatan</h6>
+                                    <input type="text" class="form-control" disabled value="<?= $a->tahun_pembuatan_inovasi ?>">
                                 </div>
                             </div>
                         </div>
