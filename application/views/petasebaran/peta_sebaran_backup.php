@@ -148,7 +148,7 @@
             myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: [<?= $datatahun ?>],
+                    labels: labels,
                     datasets: [{
                         label: 'Grafik Inovasi Per Tahun',
                         data: Grafikinovasi,
@@ -162,9 +162,9 @@
             myChart1 = new Chart(chart, {
                 type: 'bar',
                 data: {
-                    labels: [<?= $datatahun ?>],
+                    labels: labels,
                     datasets: [{
-                        label: 'Grafik Innovator Per Tahun',
+                        label: 'Grafik Inovator Per Tahun',
                         data: Grafikinovator,
                         backgroundColor: ['#0C4886'],
                         borderColor: ['#0C4886'],
@@ -265,7 +265,7 @@
                         url = "<?= base_url('home/detailgetkategori/') ?>" + data.id_kecamatan + "?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
                     }
                     html = '<b style="font-size:15px">Kecamatan ' + data.nama_kecamatan + '</b><hr>' + '<b>Inovasi : </b>' + data.total_inovasi +
-                        '<br><b>Innovator : </b>' + data.total_inovator + '<br><b>Instansi : </b>' + data.total_instansi + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="' + url + '"><hr>Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>'
+                        '<br><b>Inovator : </b>' + data.total_inovator + '<br><b>Instansi : </b>' + data.total_instansi + '<br><a style="margin-left:120px;text-decoration:none; color:black" href="' + url + '"><hr>Detail<i class="fa fa-info-circle" style="margin-left:5px" aria-hidden="true"></i></a>'
 
                 }
 

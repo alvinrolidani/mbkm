@@ -16,12 +16,7 @@ class Home extends CI_Controller
 	}
 	public function peta()
 	{
-		$datatahun = "";
-		for ($i = 2016; $i <= date('Y'); $i++) {
-			$tahun = $i;
-			$datatahun .= "'.$tahun'" . ",";
-		}
-		$data['datatahun'] = $datatahun;
+
 		$data['kecamatan'] = $this->M_Peta->get();
 		$this->load->view('templates/header_peta');
 		$this->load->view('templates/sidebar_peta');

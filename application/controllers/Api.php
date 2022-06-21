@@ -25,7 +25,7 @@ class Api extends CI_Controller
 
             $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovator.id_kecamatan = '" . $row->id_kecamatan . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM `inovator` WHERE inovator.id_kecamatan ='" . $row->id_kecamatan . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM `inovator` WHERE inovator.id_kecamatan ='" . $row->id_kecamatan . "'");
 
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "'");
 
@@ -55,9 +55,9 @@ class Api extends CI_Controller
 
         $get = $this->db->get('kecamatan')->result();
         foreach ($get as $row) {
-            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND bidang_inovasi.id_bidang_inovasi ='" . $id . "'");
+            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator  WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "' AND inovator.id_kategori_inovator= '" . $idi . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovasi.id_bidang_inovasi ='" . $id . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM inovator JOIN inovasi ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND bidang_inovasi.id_bidang_inovasi ='" . $id . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM inovator JOIN inovasi ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "' AND inovator.id_kategori_inovator= '" . $idi . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovasi.id_bidang_inovasi ='" . $id . "'");
 
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "'");
             $data = [
@@ -85,9 +85,9 @@ class Api extends CI_Controller
 
         $get = $this->db->get('kecamatan')->result();
         foreach ($get as $a) {
-            $inovasi = $this->db->query("SELECT * FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $a->id_kecamatan . "' AND bidang_inovasi.id_bidang_inovasi ='" . $id . "'");
+            $inovasi = $this->db->query("SELECT * FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $a->id_kecamatan . "' AND inovasi.id_bidang_inovasi ='" . $id . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM inovator JOIN inovasi ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $a->id_kecamatan . "' AND bidang_inovasi.id_bidang_inovasi ='" . $id . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM inovator JOIN inovasi ON inovasi.id_inovator=inovator.id_inovator  WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $a->id_kecamatan . "' AND inovasi.id_bidang_inovasi ='" . $id . "'");
 
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $a->id_kecamatan . "'");
             $data = [
@@ -114,9 +114,10 @@ class Api extends CI_Controller
 
         $get = $this->db->get('kecamatan')->result();
         foreach ($get as $row) {
-            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'");
+            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovator.id_kategori_inovator= '" . $idi . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator  WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovator.id_kategori_inovator= '" . $idi . "'");
+
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "'");
             $data = [
                 'inovasi' => [
@@ -142,9 +143,9 @@ class Api extends CI_Controller
 
         $get = $this->db->get('kecamatan')->result();
         foreach ($get as $row) {
-            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
+            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator  WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator  WHERE inovasi.tahun_pembuatan_inovasi='" . $tahun . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
 
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "'");
 
@@ -174,9 +175,9 @@ class Api extends CI_Controller
 
         $get = $this->db->get('kecamatan')->result();
         foreach ($get as $row) {
-            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE bidang_inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'");
+            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovator.id_kategori_inovator= '" . $idi . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE bidang_inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovator.id_kategori_inovator= '" . $idi . "'");
 
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "'");
             $data = [
@@ -204,9 +205,9 @@ class Api extends CI_Controller
 
         $get = $this->db->get('kecamatan')->result();
         foreach ($get as $row) {
-            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE bidang_inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
+            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE bidang_inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.id_bidang_inovasi ='" . $id . "'AND inovator.id_kecamatan='" . $row->id_kecamatan . "'");
 
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "'");
             $data = [
@@ -232,9 +233,9 @@ class Api extends CI_Controller
 
         $get = $this->db->get('kecamatan')->result();
         foreach ($get as $row) {
-            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'");
+            $inovasi = $this->db->query("SELECT inovasi.id_inovasi FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovator.id_kategori_inovator= '" . $idi . "'");
 
-            $inovator = $this->db->query("SELECT inovator.id_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator INNER JOIN kategori_inovator ON inovator.id_kategori_inovator=kategori_inovator.id_kategori_inovator JOIN bidang_inovasi ON inovasi.id_bidang_inovasi=bidang_inovasi.id_bidang_inovasi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "' AND kategori_inovator.id_kategori_inovator= '" . $idi . "'");
+            $inovator = $this->db->query("SELECT DISTINCT inovator.nama_inovator FROM inovasi JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "' AND inovator.id_kategori_inovator= '" . $idi . "'");
 
             $instansi = $this->db->query("SELECT instansi.id_instansi FROM instansi JOIN inovator ON instansi.id_instansi=inovator.id_instansi WHERE inovator.id_kecamatan='" . $row->id_kecamatan . "'");
             $data = [
@@ -270,7 +271,7 @@ class Api extends CI_Controller
     {
         header('Content-Type:application/json');
         $response = [];
-        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovasi.id_inovator) as total_inovator FROM `inovasi`  GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
+        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovator.nama_inovator) as total_inovator FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator  GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
         foreach ($query as $a) {
 
             $data = [
@@ -287,7 +288,7 @@ class Api extends CI_Controller
         header('Content-Type:application/json');
         $response = [];
         $id = $this->input->get('kategoriinovasi');
-        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovasi.id_inovator) as total_inovator FROM `inovasi` WHERE id_bidang_inovasi='" . $id . "'GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
+        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovator.nama_inovator) as total_inovator FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE id_bidang_inovasi='" . $id . "'GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
 
 
         foreach ($query as $a) {
@@ -308,7 +309,7 @@ class Api extends CI_Controller
         $idi = $this->input->get('kategoriinovator');
 
 
-        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovasi.id_inovator) as total_inovator FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovator.id_kategori_inovator='" . $idi . "' GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
+        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovator.nama_inovator) as total_inovator FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator  WHERE inovator.id_kategori_inovator='" . $idi . "' GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
         foreach ($query as $a) {
 
             $data = [
@@ -326,7 +327,7 @@ class Api extends CI_Controller
         $response = [];
         $id = $this->input->get('kategoriinovasi');
         $tahun = $this->input->get('tahun');
-        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovasi.id_inovator) as total_inovator FROM `inovasi` WHERE inovasi.id_bidang_inovasi= '" . $id . "' AND inovator.tahun_pembuatan_inovasi='" . $tahun . "'");
+        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovator.nama_inovator) as total_inovator FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.id_bidang_inovasi= '" . $id . "' AND inovasi.tahun_pembuatan_inovasi='" . $tahun . "'")->result();
         foreach ($query as $a) {
 
             $data = [
@@ -361,7 +362,7 @@ class Api extends CI_Controller
         header('Content-Type:application/json');
         $response = [];
         $tahun = $this->input->get('tahun');
-        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovasi.id_inovator) as total_inovator FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.tahun_pembuatan_inovasi= '" . $tahun . "' GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
+        $query = $this->db->query("SELECT inovasi.tahun_pembuatan_inovasi,COUNT( DISTINCT inovasi.id_inovasi) as total_inovasi,COUNT(DISTINCT inovator.nama_inovator) as total_inovator FROM `inovasi` JOIN inovator ON inovasi.id_inovator=inovator.id_inovator WHERE inovasi.tahun_pembuatan_inovasi= '" . $tahun . "' GROUP BY inovasi.tahun_pembuatan_inovasi ASC")->result();
         foreach ($query as $a) {
 
             $data = [

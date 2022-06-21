@@ -97,8 +97,8 @@
                                     <th>No</th>
                                     <th>Judul Inovasi</th>
                                     <th>Kategori Inovasi</th>
-                                    <th>Kategori Inovator</th>
-                                    <th>Nama Inovator</th>
+                                    <th>Kategori Innovator</th>
+                                    <th>Nama Innovator</th>
                                     <th>Kecamatan</th>
                                     <th>Aksi</th>
 
@@ -173,7 +173,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div style="background-color:#E5E9F5;" class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><b>Informasi Detail Inovator</b></h5>
+                            <h5 class="modal-title" id="exampleModalLabel"><b>Informasi Detail Innovator</b></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -181,7 +181,7 @@
                             <img src="<?= base_url('assets/mbkm/img/' . $a->foto_inovator) ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
                             <p style="margin-top:20px;font-weight:700"><?= $a->nama_inovator ?></p>
 
-                            <h6 style="font-weight:700;margin-top:30px">Kategori Inovator</h6>
+                            <h6 style="font-weight:700;margin-top:30px">Kategori Innovator</h6>
                             <input type="text" class="form-control" disabled value="<?= $a->nama_kategori_inovator ?>">
                             <div class="deskripsi">
                                 <h6>Email</h6>
