@@ -33,6 +33,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div style="width: 600px;height: 500px;margin-left:900px;margin-top:-500px">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -77,7 +85,7 @@
                     <?php endfor; ?>
                 </select>
             </div>
-            <button title="Filter" onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
+            <button title="Filter" id="button" onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/filter.png">
             </button>
             <button title="Reset" id="reset" onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">

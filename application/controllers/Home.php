@@ -16,19 +16,12 @@ class Home extends CI_Controller
 	}
 	public function peta()
 	{
-		$inovator = $this->input->get('kategoriinovator');
-		$inovasi = $this->input->get('kategoriinovasi');
-		$tahun = $this->input->get('tahun');
-
-		$data['tahun'] = $tahun;
-		$data['inovasi'] = $inovasi;
-		$data['inovator'] = $inovator;
 
 		$data['kecamatan'] = $this->M_Peta->get();
-
-
 		$this->load->view('templates/header_peta');
 		$this->load->view('templates/sidebar_peta');
+		$this->load->view('templates/footer_peta');
+
 		$this->load->view('petasebaran/peta_sebaran', $data);
 	}
 

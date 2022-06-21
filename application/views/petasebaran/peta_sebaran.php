@@ -14,24 +14,10 @@
         box-shadow: none;
     }
 </style>
+
+
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-<script src="<?= base_url('assets/js/leaflet.js') ?>"></script>
-<script src="<?= base_url('assets/js//leaflet-panel-layers-master/src/leaflet-panel-layers.js') ?>"></script>
-<script src="<?= base_url('assets/js/') ?>leaflet.ajax.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="<?= base_url('api/dataInovasiTahun') . "?kategoriinovasi=" . $inovasi . "&tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('api/dataInovatorTahun') . "?kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('api/dataTahun') . "?tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('api/dataSemuaTahun') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator  ?>"></script>
-<script src="<?= base_url('api/semuadata') ?>"></script>
-<script src="<?= base_url('api/getkategori') . "?kategoriinovasi=" . $inovasi . "&kategoriinovator=" . $inovator . "&tahun=" . $tahun ?>"></script>
-<script src="<?= base_url('api/data') ?>"></script>
-<script src="<?= base_url('api/reset') ?>"></script>
-<script src="<?= base_url('api/tahunGrafik') ?>"></script>
-<script src="<?= base_url('api/grafikData') ?>"></script>
+
 
 <script>
     //menampilkan map
@@ -66,6 +52,10 @@
     let geoJsonLayer = kecamatan;
     let kecamatanGroup = L.layerGroup();
     let url;
+    let grafik;
+    let myChart;
+    let myChart1;
+    let loadGrafik
     let geojson;
     let loadJsonData;
     var kategoriinovator = document.querySelector("#kategoriinovator");
@@ -79,7 +69,7 @@
             var data = geoJsonLayer[i]
             var NAMA = data.nama_kecamatan
 
-            let url = `<?= base_url() ?>assets/datakecamatan/` + data.shp
+            url = `<?= base_url() ?>assets/datakecamatan/` + data.shp
             let get = await fetch(url)
             let json = await get.json();
 
@@ -97,54 +87,71 @@
     //change data kategori
     let changeData = async () => {
 
+
         var inovasi = kategoriinovasi.options[kategoriinovasi.selectedIndex].value
         var inovator = kategoriinovator.options[kategoriinovator.selectedIndex].value
         var tahun = kategoritahun.options[kategoritahun.selectedIndex].value
 
 
         if (inovasi == 'semua' && inovator == 'semua' && tahun == 'semua') {
-            url = "<?= base_url('api/semuadata/') ?>"
+            url = "<?= base_url('api/semuadata') ?>"
+            grafik = "<?= base_url('api/semuaGrafik') ?>"
 
         } else if (inovasi != 'semua' && inovator == 'semua' && tahun == 'semua') {
             url = "<?= base_url('api/dataInovasi') ?>?kategoriinovasi=" + inovasi + ""
+            grafik = "<?= base_url('api/grafikInovasi') ?>?kategoriinovasi=" + inovasi + ""
 
         } else if (inovasi == 'semua' && inovator != 'semua' && tahun == 'semua') {
             url = "<?= base_url('api/dataInovator') ?>?kategoriinovator=" + inovator + ""
+            grafik = "<?= base_url('api/grafikInovator') ?>?kategoriinovator=" + inovator + ""
 
         } else if (inovasi == 'semua' && inovator == 'semua' && tahun != 'semua') {
             url = "<?= base_url('api/dataTahun') ?>?tahun=" + tahun + ""
+            grafik = "<?= base_url('api/grafikTahun') ?>?tahun=" + tahun + ""
 
         } else if (inovasi != 'semua' && inovator == 'semua' && tahun != 'semua') {
             url = "<?= base_url('api/dataInovasiTahun') ?>?kategoriinovasi=" + inovasi + "&tahun=" + tahun + ""
+            grafik = "<?= base_url('api/grafikInovasiTahun') ?>?kategoriinovasi=" + inovasi + "&tahun=" + tahun + ""
 
         } else if (inovasi == 'semua' && inovator != 'semua' && tahun != 'semua') {
             url = "<?= base_url('api/dataInovatorTahun') ?>?kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+            grafik = "<?= base_url('api/grafikInovatorTahun') ?>?kategoriinovator=" + inovator + "&tahun=" + tahun + ""
 
         } else if (inovasi != 'semua' && inovator != 'semua' && tahun == 'semua') {
             url = "<?= base_url('api/dataSemuaTahun') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + ""
+            grafik = "<?= base_url('api/grafikSemuaTahun') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + ""
         } else {
 
             url = "<?= base_url('api/getkategori') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
+            grafik = "<?= base_url('api/grafikKategori') ?>?kategoriinovasi=" + inovasi + "&kategoriinovator=" + inovator + "&tahun=" + tahun + ""
         }
+        let getGrafik = await fetch(grafik)
         let get = await fetch(url);
+        loadGrafik = await getGrafik.json();
         loadJsonData = await get.json();
+        document.getElementById("button").disabled = true
         kecamatanGroup.clearLayers();
         getGeoJson().then(() => {
 
             var ctx = document.getElementById("myChart").getContext('2d');
+            var chart = document.getElementById("myChart2").getContext('2d');
             labels = [];
-            value = [];
-            for (i in loadJsonData) {
-                labels.push(loadJsonData[i].nama_kecamatan);
-                value.push(loadJsonData[i].total_inovasi);
+            Grafikinovasi = [];
+            Grafikinovator = [];
+
+
+            for (i in loadGrafik) {
+                labels.push(loadGrafik[i].tahun_pembuatan_inovasi)
+                Grafikinovasi.push(loadGrafik[i].total_inovasi);
+                Grafikinovator.push(loadGrafik[i].total_inovator);
             }
-            var myChart = new Chart(ctx, {
+            myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: labels,
                     datasets: [{
                         label: 'Grafik Inovasi Per Tahun',
-                        data: value,
+                        data: Grafikinovasi,
                         backgroundColor: ['#0C4886'],
                         borderColor: ['#0C4886'],
                         borderWidth: 1,
@@ -152,8 +159,20 @@
                     }]
                 }
             });
-
-
+            myChart1 = new Chart(chart, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Grafik Inovator Per Tahun',
+                        data: Grafikinovator,
+                        backgroundColor: ['#0C4886'],
+                        borderColor: ['#0C4886'],
+                        borderWidth: 1,
+                        borderRadius: 15
+                    }]
+                }
+            });
         });
 
     }
@@ -164,11 +183,11 @@
         url = "<?= base_url('api/reset') ?>";
         let get = await fetch(url);
         loadJsonData = await get.json();
+        document.getElementById("button").disabled = false
         kecamatanGroup.clearLayers();
         getGeoJson().then(() => {
-            var ctx = document.getElementById("myChart");
-            let html = '';
-            ctx.innerHTML = html;
+            myChart.destroy();
+            myChart1.destroy();
 
         })
     }
@@ -176,8 +195,8 @@
     function style(feature) {
         totaldata = 0
         for (i in loadJsonData) {
-            if (loadJsonData[i].nama_kecamatan === feature.properties.WADMKC) {
-                totaldata = loadJsonData[i].total
+            if (loadJsonData[i].inovasi.nama_kecamatan === feature.properties.WADMKC) {
+                totaldata = loadJsonData[i].inovasi.total
             }
         }
         return {
@@ -214,7 +233,7 @@
         if (feature.properties.WADMKC) {
 
             for (i in loadJsonData) {
-                var data = loadJsonData[i]
+                var data = loadJsonData[i].inovasi
                 if (data.nama_kecamatan === feature.properties.WADMKC) {
                     var inovasi = kategoriinovasi.options[kategoriinovasi.selectedIndex].value
                     var inovator = kategoriinovator.options[kategoriinovator.selectedIndex].value
