@@ -138,7 +138,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <img src="<?= base_url('assets/mbkm/img/' . $a->foto_inovasi) ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
+                            <img src="https://tim1.koys.my.id/assets/upload/foto_inovasi/<?= $a->foto_inovasi ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
                             <p style="margin-left:110px;margin-top:-120px;font-weight:700"><?= $a->nama_inovasi ?></p>
                             <p style="margin-left:110px;margin-top:-20px;"><?= $a->nama_inovator ?></p>
                             <h6 style="font-weight:700;margin-top:100px">Kategori Inovasi</h6>
@@ -178,7 +178,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <img src="<?= base_url('assets/mbkm/img/' . $a->foto_inovator) ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
+                            <img src="https://tim1.koys.my.id/assets/upload/foto_inovator/<?= $a->foto_inovator ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
                             <p style="margin-top:20px;font-weight:700"><?= $a->nama_inovator ?></p>
 
                             <h6 style="font-weight:700;margin-top:30px">Kategori Innovator</h6>

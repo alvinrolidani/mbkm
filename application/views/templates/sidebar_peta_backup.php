@@ -88,9 +88,7 @@
             <button title="Filter" id="button" onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/filter.png">
             </button>
-            <button title="Reset" id="reset" onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">
-                <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png">
-            </button>
+
 
 
         </nav>
