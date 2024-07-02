@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 
 body {
-	background-color: #F2EBEB;
+	background-color: #f2ebeb;
 	overflow-x: hidden;
 	font-weight: 900;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 
 .container-fluid {
 	padding-top: 5px;
 }
-
 
 .container-fluid .title {
 	width: 1536px;
@@ -18,7 +17,7 @@ body {
 	transform: translateX(-49px);
 }
 
-*>.container-fluid .title {
+* > .container-fluid .title {
 	padding: 25px 10px 10px 20px;
 }
 
@@ -26,7 +25,6 @@ body {
 	display: flex;
 	padding-left: 10px;
 	margin-top: -10px;
-
 }
 
 .container-fluid ul li {
@@ -34,14 +32,10 @@ body {
 	padding-right: 20px;
 }
 
-
-
-/* awwal sidebar */
 .sidebar li {
 	margin: 0;
 	padding: 0;
 	padding-right: 3rem;
-
 }
 
 .sidebar #menu_item1 li,
@@ -49,12 +43,7 @@ body {
 	padding-left: 20px;
 	list-style: disc outside;
 	transform: translateX(20px);
-
-
 }
-
-
-
 
 .sidebar .nav-link {
 	transform: translateX(-15px);
@@ -62,29 +51,23 @@ body {
 	color: var(--bs-dark);
 }
 
-
-/* akhir sidebar */
-
-
 .container-fluid .sidebar,
 .container-fluid .title {
 	background-color: white;
-
 }
 
 .container-fluid .nav {
 	height: 218vh;
-
-
 }
 
 .filter nav {
 	display: flex;
 	gap: 50px;
 	justify-content: center;
-	position: relative;
-	bottom: 470px;
-	z-index: 10
+	position: absolute;
+	left: 20%;
+	bottom: 550px;
+	z-index: 10;
 }
 
 .filter nav .btn-secondary {
@@ -94,10 +77,6 @@ body {
 	width: 200px;
 }
 
-
-
-
-/* toggle */
 .active-nav {
 	width: 34%;
 	overflow-x: hidden;
@@ -112,8 +91,4 @@ body {
 .active-nav-title {
 	transform: translateX(-135px);
 	transition: 0.4s;
-
-
 }
-
-/* akhir toggle */

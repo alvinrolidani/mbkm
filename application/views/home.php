@@ -217,7 +217,7 @@
                 <a href="https://bappedalitbang.bogorkab.go.id/"><img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (1).jpeg" class="d-block w-100 h-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <a href="http://bekoy.site/MBKM1/index.php/Login"><img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM.jpeg" class="d-block w-100 h-100" alt="..."></a>
+                <a href="http://tim1.d-undangan.buzz"><img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM.jpeg" class="d-block w-100 h-100" alt="..."></a>
             </div>
             <div class="carousel-item">
                 <a href="<?= base_url('home/peta') ?>"><img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (2).jpeg" class="d-block w-100 h-100" alt="..."></a>
@@ -331,10 +331,10 @@
         <div class="medsos" id="kontak">
             <h4>Media Sosial</h4>
             <ul>
-                <li><a href="https://www.facebook.com/bogorkab/">Facebook</a></li>
-                <li><a href="https://www.instagram.com/bappedalitbangkabbogor/">Instagram</a></li>
-                <li><a href="https://www.youtube.com/channel/UC9sZR6KcImlF_ShNG4Iu44Q">Youtube</a></li>
-                <li><a href="https://twitter.com/bogorkab">Twitter</a></li>
+                <li><a href="https://www.facebook.com/sinova.jelita/">Facebook</a></li>
+                <li><a href="https://www.instagram.com/sinovajelita/">Instagram</a></li>
+                <li><a href="https://www.youtube.com/channel/UCdDC6Jo631cmLv-bXkCtTew">Youtube</a></li>
+
             </ul>
         </div>
     </footer>

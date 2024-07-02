@@ -16,7 +16,7 @@ class petakhusus extends CI_Controller
 		}
 		$data['datatahun'] = $datatahun;
 		$data['kecamatan'] = $this->M_Peta->get();
-		$this->load->view('templates/header_peta');
+		$this->load->view('templates/header_petakhusus');
 		$this->load->view('templates/sidebar_petakhusus');
 		$this->load->view('templates/footer_peta');
 		$this->load->view('petasebaran/peta_sebaran', $data);

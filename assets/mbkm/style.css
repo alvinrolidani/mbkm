@@ -168,7 +168,9 @@ footer .medsos h4 {
     header .main-menu .dropdown-menu {
         border: none;
     }
-
+footer .medsos ul li a:hover{
+    color:white
+}
 
     @media screen and (max-width: 922px) {
 
