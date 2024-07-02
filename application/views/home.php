@@ -1,5 +1,163 @@
 <!doctype html>
 <html lang="en">
+<style>
+    footer .medsos h4 {
+        margin-left: 30px;
+    }
+
+    header .main-menu .dropdown-menu {
+        border: none;
+    }
+
+
+    @media screen and (max-width: 922px) {
+
+        /*Hamburer menu*/
+
+        .navbar-collapse {
+            position: absolute;
+            top: 93px;
+            left: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            width: 100%;
+            transition: all 0.4s ease;
+            display: block;
+            background-color: #f3D900;
+        }
+
+        .navbar-collapse.collapsing {
+            height: auto !important;
+            margin-left: 50%;
+            left: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-collapse.show {
+            left: 0;
+        }
+
+        /*akhir hamburger*/
+
+        header .main-menu .navbar-brand img {
+            width: 350px;
+        }
+
+
+        #carouselExampleControls {
+
+            height: 550px;
+
+        }
+
+
+
+
+        header .main-menu .navbar-collapse ul li .active {
+            margin-left: -250px;
+        }
+
+        header .main-menu .navbar-collapse li .dropdown {
+            margin-left: -17px;
+        }
+
+        header .main-menu .navbar-collapse li button {
+            margin-left: -10px;
+        }
+
+
+
+        .sambutan .row .caption {
+            font-size: 16px;
+            margin-right: -150px;
+        }
+    }
+
+
+
+
+    @media screen and (max-width: 576px) {
+
+        header .main-menu .navbar-brand img {
+            width: 150px;
+
+        }
+
+
+
+        header .main-menu .navbar-collapse ul li .active {
+            margin-left: -250px;
+        }
+
+        header .main-menu .navbar-collapse li .dropdown {
+            margin-left: -17px;
+        }
+
+        header .main-menu .navbar-collapse li button {
+            margin-left: -10px;
+        }
+
+
+
+        /*Hamburer menu*/
+
+        .navbar-collapse {
+            position: absolute;
+            top: 54px;
+            left: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            width: 100%;
+            transition: all 0.4s ease;
+            display: block;
+            background-color: #f3D900;
+        }
+
+        .navbar-collapse.collapsing {
+            height: auto !important;
+            margin-left: 50%;
+            left: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-collapse.show {
+            left: 0;
+        }
+
+        /*akhir hamburger*/
+
+
+
+        #carouselExampleControls {
+            height: 300px;
+
+        }
+
+
+
+
+
+        .sambutan .row .caption {
+            font-size: 13px;
+            margin-right: -150px;
+        }
+
+        /*.container .services{
+    font-size:10px;
+}*/
+
+        footer * {
+            font-size: 10px;
+        }
+
+        footer .medsos h4 {
+            margin-left: 30px;
+        }
+
+    }
+</style>
 
 <head>
     <!-- Required meta tags -->
@@ -24,7 +182,8 @@
                                 <a class="nav-link active" href="#" style="padding-left:25; color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="<?= base_url('home/peta') ?>" style="width:500; color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Peta Sebaran</a>
+                                <a class="nav-link " href="<?= base_url('home/peta') ?>" style="width:500; color:  #0C4885; font-weight: bold; font-size: 1.3rem;">Peta
+                                    Sebaran</a>
                             </li>
                             <li class="nav-item">
                                 <div class="dropdown">
@@ -55,13 +214,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (1).jpeg" class="d-block w-100 h-100" alt="...">
+                <a href="https://bappedalitbang.bogorkab.go.id/"><img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (1).jpeg" class="d-block w-100 h-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM.jpeg" class="d-block w-100 h-100" alt="...">
+                <a href="http://bekoy.site/MBKM1/index.php/Login"><img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM.jpeg" class="d-block w-100 h-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (2).jpeg" class="d-block w-100 h-100" alt="...">
+                <a href="<?= base_url('home/peta') ?>"><img src="<?= base_url('assets/mbkm/') ?>img/WhatsApp Image 2022-05-17 at 3.45.46 PM (2).jpeg" class="d-block w-100 h-100" alt="..."></a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -86,15 +245,32 @@
                 <div class="caption">
                     <h3 style="font-weight: bolder;">SAMBUTAN KEPALA BAPPEDALITBANG KABUPATEN BOGOR</h3>
                     <br><br>Assalamualaikum Warahmatullahi Wabarakatuh</p>
-                    <p style="text-align: justify;">Daya saing saat ini menjadi salah satu parameter dalam konsep kemandirian daerah dan berkelanjutan. Strategi peningkatan daya saing daerah ditempuh melalui upaya menumbuhkembangkan inovasi daerah di berbagai sektor. Kabupaten Bogor merupakan salah satu dari daerah di Indonesia yang menciptakan terobosan-terobosan inovatif yang mengedepankan kemanfaatan, efesiensi, efektivitas dan berkelanjutan.
+                    <p style="text-align: justify;">Daya saing saat ini menjadi salah satu parameter dalam konsep
+                        kemandirian daerah dan berkelanjutan. Strategi peningkatan daya saing daerah ditempuh melalui
+                        upaya menumbuhkembangkan inovasi daerah di berbagai sektor. Kabupaten Bogor merupakan salah satu
+                        dari daerah di Indonesia yang menciptakan terobosan-terobosan inovatif yang mengedepankan
+                        kemanfaatan, efesiensi, efektivitas dan berkelanjutan.
 
-                        <br><br>Pelan namun pasti, Kabupaten Bogor terus berbenah, mengoptimalkan kemampuan yang dimiliki untuk mendorong budaya inovasi yang selaras dengan program Panca Karsa guna mewujudkan Kabupaten Bogor Termaju, Nyaman dan Berkeadaban. Inovasi yang lahir bukan hanya sebatas tataran ide/gagasan inovasi tetapi sampai mengimplementasikan inovasi di masyarakat.
+                        <br><br>Pelan namun pasti, Kabupaten Bogor terus berbenah, mengoptimalkan kemampuan yang
+                        dimiliki untuk mendorong budaya inovasi yang selaras dengan program Panca Karsa guna mewujudkan
+                        Kabupaten Bogor Termaju, Nyaman dan Berkeadaban. Inovasi yang lahir bukan hanya sebatas tataran
+                        ide/gagasan inovasi tetapi sampai mengimplementasikan inovasi di masyarakat.
 
-                        <br><br>Inovasi dipandang sebagai proses kreatif yang tidak ternilai harganya. Sejalan dengan hal tersebut, Pemerintah Kabupaten Bogor menyelenggarakan Gelar Inovasi Daerah sebagai bentuk apresiasi kepara para inovator dalam rangka menumbuhkan motivasi dan budaya inovasi. Melalui kegiatan tahunan yang dilaksanakan secara konsisten dan berkelanjutan tersebut, tercipta beragam inovasi kreatif dari berbagai stakeholder di Kabupaten Bogor guna meningkatkan kesejahteraan masyarakat dan daya saing daerah.
+                        <br><br>Inovasi dipandang sebagai proses kreatif yang tidak ternilai harganya. Sejalan dengan
+                        hal tersebut, Pemerintah Kabupaten Bogor menyelenggarakan Gelar Inovasi Daerah sebagai bentuk
+                        apresiasi kepara para inovator dalam rangka menumbuhkan motivasi dan budaya inovasi. Melalui
+                        kegiatan tahunan yang dilaksanakan secara konsisten dan berkelanjutan tersebut, tercipta beragam
+                        inovasi kreatif dari berbagai stakeholder di Kabupaten Bogor guna meningkatkan kesejahteraan
+                        masyarakat dan daya saing daerah.
 
-                        <br><br>Penerbitan buku ini merupakan bagian dari perjalanan lahirnya inovasi di Kabupaten Bogor. Semoga buku ini bermanfaat sebagaimana arahan Bupati Bogor sebagai bahan transfer of knowledge dan menjadi referensi bagi pihak-pihak yang memerlukan pengetahuan baru mengenai perkembangan inovasi.
+                        <br><br>Pembuatan website ini merupakan bagian dari perjalanan lahirnya inovasi di Kabupaten
+                        Bogor. Semoga website ini bermanfaat sebagai informasi tentang inovasi yang ada di Kabupaten
+                        Bogor
+                        dan menjadi referensi bagi pihak-pihak yang memerlukan pengetahuan baru mengenai
+                        perkembangan inovasi.
 
-                        <br><br>Pada kesempatan yang baik ini, saya mengucapkan terima kasih kepada seluruh tim yang tidak kenal lelah dalam menyiapkan dan menerbitkan buku ini.
+                        <br><br>Pada kesempatan yang baik ini, saya mengucapkan terima kasih kepada seluruh tim yang
+                        tidak kenal lelah dalam menyiapkan dan membuat website ini.
 
                         <br><br>Wassalamualaikum Warahmatullahi Wabarakatuh
 
@@ -155,10 +331,10 @@
         <div class="medsos" id="kontak">
             <h4>Media Sosial</h4>
             <ul>
-                <li><a href="">Facebook</a></li>
-                <li><a href="https://www.instagram.com/mlnrfi_/">Instagram</a></li>
-                <li><a href="">Youtube</a></li>
-                <li><a href="https://twitter.com/ijapangestu">Twitter</a></li>
+                <li><a href="https://www.facebook.com/bogorkab/">Facebook</a></li>
+                <li><a href="https://www.instagram.com/bappedalitbangkabbogor/">Instagram</a></li>
+                <li><a href="https://www.youtube.com/channel/UC9sZR6KcImlF_ShNG4Iu44Q">Youtube</a></li>
+                <li><a href="https://twitter.com/bogorkab">Twitter</a></li>
             </ul>
         </div>
     </footer>

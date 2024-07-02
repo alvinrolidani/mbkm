@@ -16,7 +16,7 @@
                 <div class="title" style="margin-left: 30px;">
                     <ul>
                         <li><a href="<?= base_url('home/') ?>"> <img src="<?= base_url('assets/mbkm/') ?>img/logo kab bogor 1.png" alt="" style="width: 50px;"></a></li>
-                        <li><a href="<?= base_url('home/') ?>"><img src="<?= base_url('assets/mbkm/') ?>img/sidebar/logoinovasi.png" style="margin-top:10px;"></a></li>
+                        <li id="commandCenter"><a href="<?= base_url('home/') ?>"><img src="<?= base_url('assets/mbkm/') ?>img/sidebar/logoinovasi.png" style="margin-top:10px;"></a></li>
                         <marquee scrollamount="10" behavior="alternate">
                             <h5><strong>Cara penggunaan: Silahkan filter terlebih dahulu untuk melihat jumlah inovasi</strong></h5>
                         </marquee>
@@ -26,16 +26,16 @@
                 </div>
                 <div id="mapgis"></div>
 
-                <div class="row">
-                    <div class="col-lg-10">
-                        <div style="width: 600px;height: 500px">
+                <div class="grafik">
+                    <div class="col-md-12">
+                        <div style="width: 570px;height: 500px" id="chart">
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-10">
-                        <div style="width: 600px;height: 500px;margin-left:900px;margin-top:-500px">
+
+
+                    <div class="col-md-12">
+                        <div style="width: 570px;height: 500px;margin-left:900px;margin-top:-500px" id="chart2">
                             <canvas id="myChart2"></canvas>
                         </div>
                     </div>
@@ -52,6 +52,9 @@
     $kategoriinovasi = $this->db->get('bidang_inovasi')->result();
     $kategoriinovator = $this->db->get('kategori_inovator')->result();
     ?>
+
+
+
     <div class=" filter">
         <nav>
 

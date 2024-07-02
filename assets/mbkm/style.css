@@ -161,3 +161,223 @@ footer a {
 }
 
 /* akhir footer */
+footer .medsos h4 {
+        margin-left: 30px;
+    }
+
+    header .main-menu .dropdown-menu {
+        border: none;
+    }
+
+
+    @media screen and (max-width: 922px) {
+
+        /*Hamburer menu*/
+
+        .navbar-collapse {
+            position: absolute;
+            top: 93px;
+            left: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            width: 100%;
+            transition: all 0.4s ease;
+            display: block;
+            background-color: #f3D900;
+        }
+
+        .navbar-collapse.collapsing {
+            height: auto !important;
+            margin-left: 50%;
+            left: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-collapse.show {
+            left: 0;
+        }
+
+        /*akhir hamburger*/
+
+        header .main-menu .navbar-brand img {
+            width: 350px;
+        }
+
+
+        #carouselExampleControls {
+
+            height: 550px;
+
+        }
+
+
+
+
+        header .main-menu .navbar-collapse ul li .active {
+            margin-left: -250px;
+        }
+
+        header .main-menu .navbar-collapse li .dropdown {
+            margin-left: -17px;
+        }
+
+        header .main-menu .navbar-collapse li button {
+            margin-left: -10px;
+        }
+
+
+
+        .sambutan .row .caption {
+            font-size: 16px;
+            margin-right: -150px;
+        }
+    }
+
+
+    @media screen and (max-width: 990px) {
+
+        /*Hamburer menu*/
+
+        .navbar-collapse {
+            position: absolute;
+            top: 93px;
+            left: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            width: 100%;
+            transition: all 0.4s ease;
+            display: block;
+            background-color: #f3D900;
+        }
+
+        .navbar-collapse.collapsing {
+            height: auto !important;
+            margin-left: 50%;
+            left: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-collapse.show {
+            left: 0;
+        }
+
+        /*akhir hamburger*/
+
+        header .main-menu .navbar-brand img {
+            width: 350px;
+        }
+
+
+        #carouselExampleControls {
+
+            height: 550px;
+
+        }
+
+
+
+
+        header .main-menu .navbar-collapse ul li .active {
+            margin-left: -250px;
+        }
+
+        header .main-menu .navbar-collapse li .dropdown {
+            margin-left: -17px;
+        }
+
+        header .main-menu .navbar-collapse li button {
+            margin-left: -10px;
+        }
+
+
+
+        .sambutan .row .caption {
+            font-size: 16px;
+            margin-right: -150px;
+        }
+    }
+
+
+
+    @media screen and (max-width: 576px) {
+
+        header .main-menu .navbar-brand img {
+            width: 150px;
+
+        }
+
+
+
+        header .main-menu .navbar-collapse ul li .active {
+            margin-left: -250px;
+        }
+
+        header .main-menu .navbar-collapse li .dropdown {
+            margin-left: -17px;
+        }
+
+        header .main-menu .navbar-collapse li button {
+            margin-left: -10px;
+        }
+
+
+
+        /*Hamburer menu*/
+
+        .navbar-collapse {
+            position: absolute;
+            top: 54px;
+            left: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            width: 100%;
+            transition: all 0.4s ease;
+            display: block;
+            background-color: #f3D900;
+        }
+
+        .navbar-collapse.collapsing {
+            height: auto !important;
+            margin-left: 50%;
+            left: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-collapse.show {
+            left: 0;
+        }
+
+        /*akhir hamburger*/
+
+
+
+        #carouselExampleControls {
+            height: 300px;
+
+        }
+
+
+
+
+
+        .sambutan .row .caption {
+            font-size: 13px;
+            margin-right: -150px;
+        }
+
+        /*.container .services{
+    font-size:10px;
+}*/
+
+        footer * {
+            font-size: 10px;
+        }
+
+        footer .medsos h4 {
+            margin-left: 30px;
+        }
+
+    }

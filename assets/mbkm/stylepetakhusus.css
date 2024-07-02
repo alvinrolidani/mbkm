@@ -1,0 +1,27 @@
+@media screen and (max-width : 576px) {
+	.filter nav .form-group select {
+		margin-right: -40px;
+		transform: translateX(-40px);
+		font-size: 9px;
+		width: 100px;
+	}
+
+	.filter nav button {
+		position: relative;
+		margin-right: -40px;
+		right: 160px;
+		top: 70px;
+
+	}
+
+	.legend i {
+		width: 15px;
+		height: 30px;
+	}
+
+	.legend {
+		width: 130px;
+		height: 200px;
+		font-size: 12px;
+	}
+}

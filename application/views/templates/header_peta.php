@@ -37,6 +37,96 @@
         margin-right: 8px;
         opacity: 0.7;
     }
+
+
+    @media screen and (max-width: 922px) {
+        .container-fluid .title ul marquee {
+            display: none;
+        }
+
+
+        .filter nav {
+            transform: translateX(270px);
+        }
+
+
+    }
+
+    @media screen and (max-width: 576px) {
+
+        .container-fluid .title ul marquee {
+            position: relative;
+            width: 750px;
+            transform: translate(-180px, 35px);
+            font-size: 10px;
+            margin-right: -150px;
+            z-index: 100;
+        }
+
+
+
+
+        .container-fluid .title ul #commandCenter a img {
+            max-width: 300px;
+            height: 20px;
+
+        }
+
+
+
+
+        #mapgis {
+            width: 572px;
+        }
+
+        .filter nav {
+            transform: translateX(-10px);
+
+
+        }
+
+        .filter nav .form-group select {
+            max-width: 135px;
+            font-size: 10px;
+            height: 30px;
+            transform: translateY(8px);
+            overflow-x: visible;
+            margin-left: 70px;
+
+        }
+
+        .filter nav button {
+            margin-left: -30px;
+
+            transform: translate(-210px, 80px);
+
+        }
+
+
+        .filter {
+            position: absolute;
+        }
+
+        .container-fluid .row #chart2 {
+
+            transform: translateY(-500px);
+            transform: translateX(-900px);
+
+        }
+
+        .container-fluid .row #chart {
+
+            transform: translateY(300px);
+        }
+
+
+
+        .container-fluid .title {
+            max-width: 575px;
+        }
+
+
+    }
 </style>
 
 <head>

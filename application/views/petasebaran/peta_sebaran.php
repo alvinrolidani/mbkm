@@ -148,7 +148,7 @@
             myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: [<?= $datatahun ?>],
+                    labels: labels,
                     datasets: [{
                         label: 'Grafik Inovasi Per Tahun',
                         data: Grafikinovasi,
@@ -162,7 +162,7 @@
             myChart1 = new Chart(chart, {
                 type: 'bar',
                 data: {
-                    labels: [<?= $datatahun ?>],
+                    labels: labels,
                     datasets: [{
                         label: 'Grafik Innovator Per Tahun',
                         data: Grafikinovator,

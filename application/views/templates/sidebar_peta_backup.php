@@ -16,7 +16,7 @@
                 <div class="title" style="margin-left: 30px;">
                     <ul>
                         <li><a href="<?= base_url('home/') ?>"> <img src="<?= base_url('assets/mbkm/') ?>img/logo kab bogor 1.png" alt="" style="width: 50px;"></a></li>
-                        <li><a href="<?= base_url('home/') ?>"><img src="<?= base_url('assets/mbkm/') ?>img/sidebar/text.png"></a></li>
+                        <li><a href="<?= base_url('home/') ?>"><img src="<?= base_url('assets/mbkm/') ?>img/sidebar/logoinovasi.png" style="margin-top:10px;"></a></li>
                         <marquee scrollamount="10" behavior="alternate">
                             <h5><strong>Cara penggunaan: Silahkan filter terlebih dahulu untuk melihat jumlah inovasi</strong></h5>
                         </marquee>
@@ -28,14 +28,14 @@
 
                 <div class="row">
                     <div class="col-lg-10">
-                        <div style="width: 600px;height: 500px">
+                        <div style="width:560px;height: 500px" id="chart">
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-10">
-                        <div style="width: 600px;height: 500px;margin-left:900px;margin-top:-500px">
+                        <div style="width:560px;height: 500px;margin-left:900px;margin-top:-500px" id="chart2">
                             <canvas id="myChart2"></canvas>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
             <div class="form-group">
                 <select id="kategoriinovator" name="kategoriinovator" id="kategoriinovator" class="form-control" style="font-weight:bolder ;">
 
-                    <option value="semua" style="font-weight:bolder ;">Seluruh Kategori Inovator</option>
+                    <option value="semua" style="font-weight:bolder ;">Seluruh Kategori Innovator</option>
                     <?php foreach ($kategoriinovator as $b) : ?>
                         <option value="<?= $b->id_kategori_inovator ?>" style="font-weight:bolder ;"><?= $b->nama_kategori_inovator ?></option>
                     <?php endforeach; ?>
@@ -88,7 +88,9 @@
             <button title="Filter" id="button" onclick="changeData()" style="background: transparent;height:40px;border:none;margin-top:-3px">
                 <img src="<?= base_url('assets/mbkm/') ?>img/filter.png">
             </button>
-
+            <button title="Reset" id="reset" onclick="reset()" style="background: transparent;height:40px;border:none;margin-top:-3px">
+                <img src="<?= base_url('assets/mbkm/') ?>img/Vector (2).png">
+            </button>
 
 
         </nav>

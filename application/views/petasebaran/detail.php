@@ -43,13 +43,216 @@
     .round {
         border-radius: 50%;
     }
+
+    /*.hamburgerMenu{
+        display: none;
+    }*/
+
+    .card-body .back {
+        display: none;
+    }
+
+
+
+    @media screen and (max-width: 922px) {
+
+
+        .container-fluid .sidebar {
+            display: none;
+        }
+
+        .container .card-body {
+            display: flex;
+            gap: 20px;
+            transform: translateX(40px);
+            margin-left: -50px;
+        }
+
+        .card-body .back {
+            display: block;
+            margin-left: -20px;
+        }
+
+        .container .overflow-x {
+
+            max-width: 110%;
+
+
+            transform: translate(-290px, 650px);
+
+        }
+
+
+        .container table tbody {
+
+            font-size: 11px;
+        }
+
+        .container .card {
+            border: none;
+            max-width: 921px;
+
+        }
+
+        /*
+        .dataTables_paginate{
+           transform: translateX(-150px)
+           
+        }
+        
+        .dataTables_info{
+           margin-top: 605px;
+           transform: translateX(-50px);
+        }
+*/
+        .fade {
+
+            background-color: rgb(0, 0, 0, 0);
+            border: none;
+        }
+
+        .container label {
+            display: none;
+        }
+
+    }
+
+
+
+    @media screen and (max-width: 576px) {
+        .card-body .back {
+            display: block;
+            margin-left: -20px;
+            margin-top: -10px;
+        }
+
+        .overflow-x,
+        .container table {
+            padding-left: 15px;
+        }
+
+        .container .card-body {
+            display: flex;
+            gap: 5px;
+
+            margin-left: 0px;
+        }
+
+        .card-body div * {
+            font-size: 20px;
+
+        }
+
+        .container-fluid .sidebar {
+            display: none;
+        }
+
+
+        .container table tbody {
+
+            font-size: 11px;
+        }
+
+    }
+
+
+
+
+
+    /*
+        .card-body div *{
+            font-size: 20px;
+        }
+
+        .container-fluid .sidebar{
+          display: none;
+        }
+
+    
+
+
+        .container table{
+           
+            transform: translateX(0px);
+            margin-top: 650px;
+            margin-left: -280px;
+        }
+
+
+        .container #table_id_wrapper{
+            margin-left: -30px;
+        }
+
+        .container table tbody{
+            margin-left: -10px;
+            font-size: 7px;
+        }
+
+        .container table tbody .sorting_1{
+           transform: translateX(30px);
+        }
+
+
+        .fade{
+            margin-top: 0px;
+           transform: translateX(-100px);
+            padding-left: -50px;
+           background-color: rgb(0,0,0,0);
+           border: none;
+        }
+
+        .modal-dialog{
+            margin-left: 200px;
+            margin-top: -100px;
+        }
+
+        .modal-content{
+
+        }
+
+        .dataTables_paginate{
+            
+            transform: translateX(-100px);
+        }
+        
+        .dataTables_info{
+            margin-top: -20px !important;
+            transform: translateY(0px);
+            margin-left: -150px; 
+        }
+
+        .container .dataTables_lenght{
+            display: none;
+        }
+
+        .container label{display: none;
+        }
+
+       
+
+        .container .card-body{
+            display: flex;
+            gap: 20px;
+            margin-left: 0px;
+        }
+
+        .container .overflow-x{
+            overflow-x: ;
+           
+        }
+
+
+}*/
 </style>
+
+
 
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-2">
             <nav class="sidebar card mb-4" style="background-color:white; height:47rem">
+
                 <ul class="nav flex-column" id="nav_accordion">
                     <li>
 
@@ -69,16 +272,37 @@
                             </a> -->
                         </div>
                     </li>
+
             </nav>
         </div>
         <div class="col-lg-10">
             <div class="container">
                 <div class="card" style="margin-left:-37px;width:78.5rem">
                     <div class="card-body">
-                        <?php foreach ($kecamatan as $nama) : ?>
-                            <h2 style="font-weight:bolder">List Data Inovasi Kecamatan <?= $nama->nama_kecamatan ?></h2>
-                        <?php endforeach; ?>
-                        <p style="margin-top:-10px;font-size:large">Inovasi Kabupaten Bogor</p>
+
+                        <a style="transform: translateY(10px);" href="<?= base_url('home/peta') ?>" class="back"><img src="<?= base_url('assets/mbkm/') ?>img/sidebar/back (1) 3.png"></a>
+
+                        <a href="<?= base_url('home/index') ?>" class="back"><img style="width: 50px; margin-left: -10px;" src="<?= base_url('assets/mbkm/') ?>img/logo kab bogor 1.png"></a>
+
+                        <!--  <nav class="hamburgerMenu">
+                             <ul>
+                                <li><a href="<?= base_url('home/index'); ?>">Home</a></li>
+                                <li><a href="<?= base_url('home/peta') ?>">Back</a></li>
+                            </ul>
+
+                            <div class="menu-toggle">
+                                <input type="checkbox">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            </nav> -->
+                        <div>
+                            <?php foreach ($kecamatan as $nama) : ?>
+                                <h2 style="font-weight:bolder">List Data Inovasi Kecamatan <?= $nama->nama_kecamatan ?></h2>
+                            <?php endforeach; ?>
+                            <p style="margin-top:-10px;font-size:large">Inovasi Kabupaten Bogor</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,10 +312,10 @@
 
 
 
-            <div class="col-lg-10">
-                <div class="container">
-                    <div style="margin-top:-40rem;margin-left:250px;width:76.5rem;">
-                        <table class="table table-striped align-middle mb-1" id="table_id">
+            <div class="col-lg-10 ">
+                <div class="container" id="test">
+                    <div class="overflow-x" style="margin-top:-40rem;margin-left:250px;width:76.5rem;">
+                        <table class="table table-striped align-middle mb-1 " id="table_id">
                             <thead class="table-light">
                                 <tr style="font-size:14px;">
                                     <th>No</th>
@@ -130,7 +354,7 @@
         </body>
         <?php foreach ($inovasi as $a) : ?>
             <div class="modal fade" id="modalInovasi<?= $a->id_inovasi ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog  modal-dialog-centered">
                     <div class="modal-content">
                         <div style="background-color:#E5E9F5;" class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel"><b>Informasi Detail Inovasi</b></h5>
@@ -138,7 +362,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <img src="https://tim1.koys.my.id/assets/upload/foto_inovasi/<?= $a->foto_inovasi ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
+                            <img src="https://tim1.koys.my.id/assets/upload/foto_inovasi1/<?= $a->foto_inovasi1 ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
                             <p style="margin-left:110px;margin-top:-120px;font-weight:700"><?= $a->nama_inovasi ?></p>
                             <p style="margin-left:110px;margin-top:-20px;"><?= $a->nama_inovator ?></p>
                             <h6 style="font-weight:700;margin-top:100px">Kategori Inovasi</h6>
@@ -178,7 +402,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <img src="https://tim1.koys.my.id/assets/upload/foto_inovator/<?= $a->foto_inovator ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
+                            <img src="https://tim1.koys.my.id/assets/upload/foto_inovator1/<?= $a->foto_inovator ?>" alt="" style="height:120px;width:90px;box-shadow:7px 7px #D9D9D9">
                             <p style="margin-top:20px;font-weight:700"><?= $a->nama_inovator ?></p>
 
                             <h6 style="font-weight:700;margin-top:30px">Kategori Innovator</h6>
@@ -215,6 +439,25 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#table_id').DataTable();
+        $('#table_id').DataTable({
+            scrollX: true,
+
+            "scrollY": "500px",
+            "scrollCollapse": true,
+
+
+
+        });
+
+
+
     });
+
+
+    //     const menuToggle = document.querySelector('.card .card-body .menu-toggle input');
+    //     const hamburgerMenu = document.querySelector('.card .card-body .hamburgerMenu ul');
+
+    //     menuToggle.addEventListener('click', function(){
+    //         hamburgerMenu.classList.toggle('slide');
+    // });
 </script>
